@@ -205,8 +205,8 @@ const AddTestimonial = () => {
               <span className={labelStyle}>Service Availed (ली गई सेवा)</span>
               <div className="relative group">
                 <FiLayers className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
-                <select {...register("studentBatch", { required: true })} className={`${inputStyle} pl-12 appearance-none`}>
-                  <option value="" className="bg-black text-gray-500">Select Service Category</option>
+                <select {...register("studentBatch", { required: true })} className={`${inputStyle} pl-12 `}>
+                  <option value="" className="bg-black text-white">Select Service Category</option>
                   {user?.courses.map(c => <option key={c._id} value={c._id} className="bg-black">{c.courseName}</option>)}
                 </select>
               </div>
