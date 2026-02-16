@@ -75,30 +75,29 @@ const { token } = useSelector((state) => state.auth);
       <div className="flex justify-between items-center w-11/12 mx-auto h-full px-4 md:px-10">
 
        
+{/* 1. LOGO ENHANCED FOR SHREE JI */}
+<Link onClick={() => setIsMenuOpen(false)} to={"/"}>
+  <div className="flex items-center -translate-x-6 gap-3 group">
+    
+    {/* Icon Box with Saffron Glow */}
+    <div className="w-11 h-11 rounded-xl bg-[#F97316]/10 flex items-center justify-center border border-[#F97316]/30 shadow-[0_0_20px_rgba(249,115,22,0.2)] shrink-0 transition-all duration-500 group-hover:border-[#F97316]/60 group-hover:shadow-[0_0_30px_rgba(249,115,22,0.4)]">
+      <span className="text-[#F97316] font-black text-2xl drop-shadow-[0_0_10px_rgba(249,115,22,0.5)]">S</span>
+    </div>
 
-        {/* 1. LOGO */}
+    {/* Text Section */}
+    <div className="flex flex-col leading-none">
+      <div className="flex items-center gap-1">
+        <span className="text-[13px] font-black uppercase tracking-[0.2em] text-[#ffffff]">
+          Shree <span className="text-[#F97316]">Ji</span>
+        </span>
+      </div>
+      <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-[#9CA3AF] mt-1 group-hover:text-[#FFD700] transition-colors duration-500">
+        Divine Yatra
+      </span>
+    </div>
 
-        <Link onClick={() => setIsMenuOpen(false)} to={"/"}>
-
-                    <div className="flex items-center -translate-x-6 gap-3">
-
-              <div className="w-10 h-10 rounded-xl bg-[#6A0DAD]/20 flex items-center justify-center border border-[#6A0DAD]/30 shadow-lg shrink-0">
-
-                <span className="text-[#ffffff] font-black text-lg">V</span>
-
-              </div>
-
-              <div className="flex flex-col leading-tight">
-
-                <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#ffffff]">Vijayvargiya</span>
-
-                <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#10b981]/80">Spoken English</span>
-
-              </div>
-
-            </div>
-
-        </Link>
+  </div>
+</Link>
 
 
 
@@ -110,7 +109,7 @@ const { token } = useSelector((state) => state.auth);
 
             <li key={index} className="relative group">
 
-              {link?.title === "Catalog" ? (
+              {link?.title === "Services" ? (
 
                 <div className="flex gap-x-1 items-center cursor-pointer text-[#ffffff] hover:text-[#10b981] transition-all">
 
@@ -378,7 +377,7 @@ const { token } = useSelector((state) => state.auth);
       
       {NavbarLinks.map((link, i) => (
         <div key={i} className="flex flex-col border-b border-white/5 pb-2">
-          {link.title === "Catalog" ? (
+          {link.title === "Services" ? (
             <>
               {/* --- CATALOG ACCORDION FOR MOBILE --- */}
               <button 

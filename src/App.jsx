@@ -49,6 +49,7 @@ import ExpensesDashboard from "./Components/Core/DashBoard/ExpensesDashboard";
 import AddTestimonial from "./Components/Core/DashBoard/Testimonials/AddTestimonial";
 import TestimonialsDashboard from "./Components/Core/DashBoard/Testimonials/TestimonialsDashboard";
 import CollectInstallment from "./Components/Core/EnrolledCourses/Right/CollectInstallment";
+import WhatsAppChat from "./Components/Common/WhatsAppChat";
 
 function App() {
 
@@ -59,7 +60,10 @@ function App() {
     <div className="h-screen bg-black">
       
       <NavBar />
-      <div><AIGeminiChat/></div>
+      <div>
+              <AIGeminiChat/>
+              <WhatsAppChat/>
+              </div>
       
       <Routes >
         <Route path="*" element={<NotFound />} />

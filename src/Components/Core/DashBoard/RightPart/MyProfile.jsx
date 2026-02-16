@@ -70,9 +70,25 @@ const MyProfile = () => {
             <div className="text-center md:text-left">
               <p className="text-2xl md:text-3xl font-bold text-white capitalize">{user?.firstName} {user?.lastName}</p>
               <p className="text-gray-400 text-sm">{user?.email}</p>
-              <div className="mt-3 inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
-                {user?.accountType} Account
-              </div>
+<div className={`mt-3 inline-block px-3 py-1 rounded-full border uppercase tracking-[0.2em] text-[10px] font-black transition-all duration-500 ${
+    user?.accountType === "Student" 
+    ? "bg-[#f97316]/10 border-[#f97316]/30 text-[#f97316]" 
+    : "bg-[#ffd700]/10 border-[#ffd700]/30 text-[#ffd700]"
+  }`}>
+    <span className="flex items-center gap-1.5">
+      {/* Dynamic Status Dot */}
+      <span className={`w-1 h-1 rounded-full animate-pulse ${user?.accountType === "Student" ? "bg-[#f97316]" : "bg-[#ffd700]"}`} />
+      
+      {/* Logic for Devotee / Guide */}
+      {
+        user?.accountType === "Student" 
+        ? "Devotee" 
+        : user?.accountType === "Instructor" 
+        ? "Guide" 
+        : user?.accountType
+      } Account
+    </span>
+</div>
             </div>
           </div>
           <button 

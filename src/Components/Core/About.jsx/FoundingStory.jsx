@@ -1,32 +1,125 @@
-// import React from 'react'
-import Hieghlightedtext from '../Home/Hieghlightedtext'
+// // import React from 'react'
+// import Hieghlightedtext from '../Home/Hieghlightedtext'
 
-/* Bhai, ye content ab tere 'Founding' data array me 
-  aise set hoga taaki wo English Academy ki story lage.
-*/
+// /* Bhai, ye content ab tere 'Founding' data array me 
+//   aise set hoga taaki wo English Academy ki story lage.
+// */
+
+// const academyStory = [
+//   {
+//     id: 1,
+//     type: "Text",
+//     heading: "22 Years of Teaching Excellence",
+//     description1: "Vijayvargiya Spoken English Institute was established with a simple mission — to help students overcome hesitation and build confidence in spoken English. Over the years, the institute has successfully trained thousands of students through practical and interactive learning methods.",
+//     description2: "Our focus is not only on speaking English, but also on personality development, interview preparation, and communication skills. We believe every student has potential, and with proper guidance, they can achieve success in academics, career, and life."
+//   },
+//   {
+//     id: 2,
+//     type: "Image",
+//     imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop"
+//   }
+// ];
+
+
+// const FoundingStory = () => {
+//   return (
+//     <div className="relative w-full py-24 overflow-hidden">
+//       {/* 1. Giant Background Watermark for Premium Vibe */}
+//       <div className="absolute top-0 right-[-5%] select-none pointer-events-none z-0">
+//         <h2 className="text-[12rem] md:text-[18rem] font-bold text-white/[0.02] tracking-tighter uppercase">Journey</h2>
+//       </div>
+
+//       <div className="max-w-7xl mx-auto px-6 relative z-10">
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+//           {academyStory.map((story) => (
+//             story.type === "Image" ? (
+//               /* Image Side: 100% Matching with Modern Automation UI */
+//               <div key={story.id} className="relative flex justify-center group order-last lg:order-none">
+//                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-80 transition duration-1000"></div>
+                
+//                 <div className="relative p-2 bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm shadow-2xl overflow-hidden">
+//                    {/* This placeholder represents where Sir's academy photo will go */}
+//                   <img 
+//                     src={story.imageUrl} 
+//                     alt="Our Journey" 
+//                     className="w-full max-w-[500px] rounded-[2rem] object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+//                   />
+//                 </div>
+//               </div>
+//             ) : (
+//               /* Text Side: Glassmorphic Container Style */
+//               <div key={story.id} className="flex flex-col gap-8 p-8 md:p-14 bg-white/[0.02] border border-white/5 rounded-[3rem] backdrop-blur-2xl shadow-inner">
+//                 <div className="flex flex-col gap-4">
+//                   {/* Branding Line */}
+//                   <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-emerald-500 rounded-full mb-2"></div>
+                  
+//                   <Hieghlightedtext 
+//                     color="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-transparent" 
+//                     data={story.heading}
+//                   />
+//                 </div>
+                
+//                 <div className="flex flex-col gap-8">
+//                   <p className="text-gray-400 text-lg leading-relaxed font-light">
+//                     {story.description1}
+//                   </p>
+                  
+//                   {/* Highlighted Quote-style Paragraph */}
+//                   <p className="text-emerald-400/90 text-base md:text-lg leading-relaxed italic border-l-4 border-emerald-500/30 pl-8 bg-emerald-500/5 py-4 rounded-r-2xl">
+//                     {story.description2}
+//                   </p>
+//                 </div>
+
+//                 {/* Aesthetic Detail */}
+//                 <div className="pt-6 flex items-center gap-4 opacity-20">
+//                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-white">Since 2010</span>
+//                    <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent"></div>
+//                 </div>
+//               </div>
+//             )
+//           ))}
+          
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default FoundingStory;
+
+
+
+
+
+
+
+
+
+
+import React from 'react'
+import Hieghlightedtext from '../Home/Hieghlightedtext'
 
 const academyStory = [
   {
     id: 1,
     type: "Text",
-    heading: "22 Years of Teaching Excellence",
-    description1: "Vijayvargiya Spoken English Institute was established with a simple mission — to help students overcome hesitation and build confidence in spoken English. Over the years, the institute has successfully trained thousands of students through practical and interactive learning methods.",
-    description2: "Our focus is not only on speaking English, but also on personality development, interview preparation, and communication skills. We believe every student has potential, and with proper guidance, they can achieve success in academics, career, and life."
+    heading: "5 Years of Devoted Service",
+    description1: "Shree Ji Divine Yatra was founded by Dhruv Vasanwal with a sacred intent — to bridge the gap between devotees and divinity. We understand that visiting Ujjain is a once-in-a-lifetime spiritual milestone for many, and we strive to make it effortless and profound.",
+    description2: "From the mystical Bhasma Aarti to the serene banks of Shipra, our protocol ensures that you focus only on your prayers while we manage every logistic node. We believe that 'Atithi Devo Bhava' is the core of our spiritual hospitality."
   },
   {
     id: 2,
     type: "Image",
-    imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1627894483216-2138af692e32?q=80&w=1374&auto=format&fit=crop" // You can replace with Dhruv's Office photo
   }
 ];
-
 
 const FoundingStory = () => {
   return (
     <div className="relative w-full py-24 overflow-hidden">
-      {/* 1. Giant Background Watermark for Premium Vibe */}
       <div className="absolute top-0 right-[-5%] select-none pointer-events-none z-0">
-        <h2 className="text-[12rem] md:text-[18rem] font-bold text-white/[0.02] tracking-tighter uppercase">Journey</h2>
+        <h2 style={{ color: 'rgba(255, 255, 255, 0.015)' }} className="text-[12rem] md:text-[18rem] font-black tracking-tighter uppercase leading-none">JOURNEY</h2>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -34,52 +127,43 @@ const FoundingStory = () => {
           
           {academyStory.map((story) => (
             story.type === "Image" ? (
-              /* Image Side: 100% Matching with Modern Automation UI */
               <div key={story.id} className="relative flex justify-center group order-last lg:order-none">
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-80 transition duration-1000"></div>
+                <div style={{ background: 'linear-gradient(to right, rgba(249,115,22,0.2), transparent)' }} className="absolute -inset-4 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-80 transition duration-1000"></div>
                 
-                <div className="relative p-2 bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm shadow-2xl overflow-hidden">
-                   {/* This placeholder represents where Sir's academy photo will go */}
+                <div style={{ backgroundColor: '#0A0A0A', borderColor: '#1F2937' }} className="relative p-3 border rounded-[2.5rem] backdrop-blur-sm shadow-2xl overflow-hidden">
                   <img 
                     src={story.imageUrl} 
-                    alt="Our Journey" 
-                    className="w-full max-w-[500px] rounded-[2rem] object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                    alt="Shree Ji Journey" 
+                    className="w-full max-w-[500px] rounded-[2rem] object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 transform group-hover:scale-105"
                   />
                 </div>
               </div>
             ) : (
-              /* Text Side: Glassmorphic Container Style */
-              <div key={story.id} className="flex flex-col gap-8 p-8 md:p-14 bg-white/[0.02] border border-white/5 rounded-[3rem] backdrop-blur-2xl shadow-inner">
+              <div key={story.id} style={{ backgroundColor: '#050505', borderColor: '#111111' }} className="flex flex-col gap-8 p-8 md:p-14 border rounded-[3rem] shadow-inner relative overflow-hidden">
                 <div className="flex flex-col gap-4">
-                  {/* Branding Line */}
-                  <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-emerald-500 rounded-full mb-2"></div>
-                  
+                  <div style={{ background: 'linear-gradient(to right, #F97316, #FFD700)' }} className="w-20 h-1.5 rounded-full mb-2"></div>
                   <Hieghlightedtext 
-                    color="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-transparent" 
+                    color="text-4xl md:text-5xl font-black tracking-tighter bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-transparent uppercase" 
                     data={story.heading}
                   />
                 </div>
                 
                 <div className="flex flex-col gap-8">
-                  <p className="text-gray-400 text-lg leading-relaxed font-light">
+                  <p style={{ color: '#9CA3AF' }} className="text-lg leading-relaxed font-light italic">
                     {story.description1}
                   </p>
-                  
-                  {/* Highlighted Quote-style Paragraph */}
-                  <p className="text-emerald-400/90 text-base md:text-lg leading-relaxed italic border-l-4 border-emerald-500/30 pl-8 bg-emerald-500/5 py-4 rounded-r-2xl">
+                  <p style={{ color: '#F97316', backgroundColor: 'rgba(249, 115, 22, 0.03)', borderColor: 'rgba(249, 115, 22, 0.2)' }} className="text-base md:text-lg leading-relaxed border-l-4 pl-8 py-6 rounded-r-2xl">
                     {story.description2}
                   </p>
                 </div>
 
-                {/* Aesthetic Detail */}
                 <div className="pt-6 flex items-center gap-4 opacity-20">
-                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-white">Since 2010</span>
-                   <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent"></div>
+                   <span style={{ color: '#FFFFFF' }} className="text-[10px] font-bold tracking-[0.5em] uppercase">Serving Since 2021</span>
+                   <div className="h-px flex-1 bg-white/20"></div>
                 </div>
               </div>
             )
           ))}
-          
         </div>
       </div>
     </div>

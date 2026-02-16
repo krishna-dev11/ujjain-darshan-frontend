@@ -25,6 +25,7 @@ import SocialStats from "../Components/Core/Home/SocialStats";
 import CodingFamily from "../Components/Core/Home/CodingFamily";
 import ModernFooter from "../Components/Core/Home/ModernFooter";
 import HeroSection from "../Components/Core/Home/HeroSection";
+import ServiceHub from "../Components/Core/Home/ServiceHub";
 // import GradientInteractiveBox from "../Components/Common/GradientInteractiveBox";
 
 const HomePage = () => {
@@ -46,6 +47,8 @@ const HomePage = () => {
     <TestimonialSlider/>
 
     <OurInstructor/>
+
+    <ServiceHub/>
 
     <SocialStats/>
 
