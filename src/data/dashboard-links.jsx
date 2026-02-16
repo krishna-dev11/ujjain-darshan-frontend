@@ -234,21 +234,21 @@ export const sidebarLinks = [
 ];
 
 export const BuyedCoursessidebarLinks = [
-  {
-    name: "Active Darshan",
-    path: "/EnrolledCourses/active-Courses",
-    icon: "FaMapMarkedAlt",
-  },
-  {
-    name: "Saved Protocols",
-    path: "/EnrolledCourses/book-marks",
-    icon: "FaBookmark",
-  },
-  {
-    name: "Devotee Sangat",
-    path: "/EnrolledCourses/community",
-    icon: "FaUsers",
-  },
+  // {
+  //   name: "Active Darshan",
+  //   path: "/EnrolledCourses/active-Courses",
+  //   icon: "FaMapMarkedAlt",
+  // },
+  // {
+  //   name: "Saved Protocols",
+  //   path: "/EnrolledCourses/book-marks",
+  //   icon: "FaBookmark",
+  // },
+  // {
+  //   name: "Devotee Sangat",
+  //   path: "/EnrolledCourses/community",
+  //   icon: "FaUsers",
+  // },
   {
     name: "Yatri Directory",
     path: "/EnrolledCourses/batch-students/:batchId",
