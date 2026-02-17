@@ -20,7 +20,7 @@ const CourseCard = ({ data }) => {
 
   return (
     <div 
-      onClick={() => token ? navigate(`/CourseDetails/${data?._id}`) : navigate("/login")}
+      onClick={() => token ? navigate(`/CourseDetails/${data?._id}`) : navigate(`/CourseDetails/${data?._id}`)}
       className='group relative flex flex-col bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-4 transition-all duration-500 hover:bg-white/[0.04] hover:border-emerald-500/20 shadow-2xl cursor-pointer overflow-hidden h-full'
     >
       <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-[2.5rem] blur opacity-0 group-hover:opacity-10 transition duration-500" />
@@ -52,11 +52,15 @@ const CourseCard = ({ data }) => {
 
         <div className='flex items-center gap-3 border-t border-white/5 pt-4 mt-auto'>
           <div className="flex items-center gap-1.5">
-             <span className="text-emerald-400 font-bold text-sm">{avgRating.toFixed(1)}</span>
-             <ReactStars count={5} edit={false} value={avgRating} size={18} color2={"#10b981"} />
+             {/* <span className="text-emerald-400 font-bold text-sm">{avgRating.toFixed(1)}</span> */}
+             <span className="text-emerald-400 font-bold text-sm">{4.5}</span>
+
+             {/* <ReactStars count={5} edit={false} value={avgRating} size={18} color2={"#10b981"} /> */}
+             <ReactStars count={5} edit={false} value={4.5} size={18} color2={"#10b981"} />
+
           </div>
           <div className="h-3 w-[1px] bg-white/10" />
-          <p className='text-sm font-black text-white'>₹{data?.price || 0}</p>
+          {/* <p className='text-sm font-black text-white'>₹{data?.price || 0}</p> */}
         </div>
       </div>
     </div>
