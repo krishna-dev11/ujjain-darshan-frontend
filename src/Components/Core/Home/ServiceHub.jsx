@@ -1117,7 +1117,7 @@ const SERVICES = [
     stat: "0 Wait",
     statLabel: "Queue Time",
     number: "01",
-    path: "/catalog/महाकाल-दर्शन-सेवा/6991d5121708945635beee63"
+    path: "/catalog/महाकाल-दर्शन-सेवा/6992ffc85927ac24f82a3e6e"
   },
   {
     id: 2,
@@ -1143,7 +1143,7 @@ const SERVICES = [
     stat: "12+",
     statLabel: "Ritual Types",
     number: "03",
-    path: "/catalog/विशेष-पूजा-सेवा/6991d5341708945635beee6c"
+    path: "/catalog/विशेष-पूजा-सेवा/699300235927ac24f82a3e77"
   },
   {
     id: 4,
@@ -1156,7 +1156,7 @@ const SERVICES = [
     stat: "7+",
     statLabel: "Sacred Sites",
     number: "04",
-    path: "/catalog/उज्जैन-मंदिर-दर्शन/6991d5201708945635beee66"
+    path: "/catalog/उज्जैन-मंदिर-दर्शन/6993000b5927ac24f82a3e71"
   },
   {
     id: 5,
@@ -1169,7 +1169,7 @@ const SERVICES = [
     stat: "5★",
     statLabel: "Hospitality",
     number: "05",
-    path: "/catalog/होटल-व-आवास/6991d53d1708945635beee6f"
+    path: "/catalog/होटल-व-आवास/6993002c5927ac24f82a3e7a"
   },
   {
     id: 6,
@@ -1182,7 +1182,7 @@ const SERVICES = [
     stat: "1 Day",
     statLabel: "Full Trip",
     number: "06",
-    path: "/catalog/ओंकारेश्वर-यात्रा/6991d52a1708945635beee69"
+    path: "/catalog/ओंकारेश्वर-यात्रा/699300155927ac24f82a3e74"
   },
   {
     id: 7,
@@ -1195,7 +1195,7 @@ const SERVICES = [
     stat: "24/7",
     statLabel: "Available",
     number: "07",
-    path: "/catalog/वाहन-व-गाइड-सेवा/6991d5511708945635beee72"
+    path: "/catalog/वाहन-व-गाइड-सेवा/699300385927ac24f82a3e7d"
   },
 ];
 
