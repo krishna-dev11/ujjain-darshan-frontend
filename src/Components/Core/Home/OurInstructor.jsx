@@ -260,33 +260,188 @@
 
 
 
-import { useState } from "react";
-import FounderImg from "../../../../public/dhruv.png"; // Apni image ka sahi path aur naam likho
+// import { useState } from "react";
+// import FounderImg from "../../../../public/dhruv.png"; // Apni image ka sahi path aur naam likho
 
-/* ─── Divine Styles (Saffron & Gold Theme) ─── */
+// /* ─── Divine Styles (Saffron & Gold Theme) ─── */
+// const GlobalStyles = () => (
+//   <style>{`
+//     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+//     @keyframes fadeSlideIn {
+//       from { opacity: 0; transform: translateX(-20px); }
+//       to   { opacity: 1; transform: translateX(0); }
+//     }
+//     @keyframes fadeIn {
+//       from { opacity: 0; }
+//       to   { opacity: 1; }
+//     }
+//     .anim-slide { animation: fadeSlideIn .6s ease both; }
+//     .anim-fade  { animation: fadeIn .8s ease both .2s; }
+
+//     .font-syne { font-family: 'Syne', sans-serif; }
+//     .font-dm   { font-family: 'DM Sans', sans-serif; }
+//   `}</style>
+// );
+
+// /* ─── Concentric Saffron Arcs (Spiritual Glow) ─── */
+// const SaffronArcs = () => (
+//   <svg viewBox="0 0 520 560" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+//     <circle cx="260" cy="370" r="230" fill="#7c2d12" opacity="0.85" />
+//     <circle cx="260" cy="370" r="230" fill="url(#saffronGrad)" />
+
+//     {[260, 290, 320, 350, 380, 410].map((r, i) => (
+//       <circle key={i} cx="260" cy="370" r={r} stroke="rgba(249,115,22,0.2)" strokeWidth="1" fill="none" />
+//     ))}
+
+//     <defs>
+//       <radialGradient id="saffronGrad" cx="40%" cy="35%" r="65%">
+//         <stop offset="0%"   stopColor="#f97316" stopOpacity="0.9" />
+//         <stop offset="60%"  stopColor="#9a3412" stopOpacity="0.8" />
+//         <stop offset="100%" stopColor="#000000" stopOpacity="0.6" />
+//       </radialGradient>
+//     </defs>
+//   </svg>
+// );
+
+// const B = ({ children }) => (
+//   <span style={{ color: '#F97316' }} className="font-bold">{children}</span>
+// );
+
+// /* ─────────────────────────────────────────────
+//    MAIN COMPONENT: OUR FOUNDER (Shree Ji)
+// ───────────────────────────────────────────── */
+// export default function OurInstructor() {
+//   const founder = {
+//     name: "Dhruv Vasanwal",
+//     designation: "Founder & Spiritual Guide | 5+ Years Excellence",
+//     bio: [
+//       { text: "With a profound vision to serve the devotees of Mahakal, " },
+//       { text: "Dhruv Vasanwal", bold: true },
+//       { text: " established " },
+//       { text: "Shree Ji Divine Yatra & Darshan", bold: true },
+//       { text: " in the holy city of Ujjain. Under his leadership, the organization has successfully guided more than " },
+//       { text: "2000+ pilgrims", bold: true },
+//       { text: " through seamless spiritual journeys." },
+//       { text: " His expertise lies in " },
+//       { text: "Darshan Management, Authentic Vedic Rituals, and Luxury Pilgrimage Logistics", bold: true },
+//       { text: ", ensuring that every devotee experiences the divine essence of Avantika with peace and comfort." },
+//     ],
+//   };
+
+//   return (
+//     <>
+//       <GlobalStyles />
+
+//       <section className="w-full min-h-screen bg-black px-6 sm:px-10 lg:px-16 py-16 font-dm">
+
+//         {/* ── Top header row ── */}
+//         <div className="flex items-start justify-between mb-12 max-w-7xl mx-auto">
+//           <div className="anim-slide">
+//             <h2 className="font-syne font-bold text-white text-5xl lg:text-7xl tracking-tighter leading-tight mb-3 uppercase">
+//               The Guiding <span style={{ color: '#F97316' }}>Light</span>
+//             </h2>
+//             <p className="text-[#9ca3af] font-dm text-base leading-relaxed max-w-lg italic">
+//               Meet the visionary behind <span className="text-white font-medium">Shree Ji Divine Yatra</span>, dedicated to making your spiritual visit to Ujjain a lifetime memory.
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* ── Main Founder Card ── */}
+//         <div
+//           className="
+//             anim-fade max-w-7xl mx-auto
+//             bg-[#0a0a0a] rounded-[48px]
+//             shadow-[0_0_80px_rgba(249,115,22,0.05),0_32px_64px_rgba(0,0,0,0.8)]
+//             border border-white/[0.05]
+//             overflow-hidden
+//             grid grid-cols-1 lg:grid-cols-2
+//           "
+//           style={{ minHeight: 520 }}
+//         >
+
+// {/* ──────── LEFT: Image + Saffron Glow ──────── */}
+// <div className="relative flex items-end justify-center overflow-hidden min-h-[400px] lg:min-h-[520px]">
+//   <div className="absolute inset-0 bg-[#050505]" />
+  
+//   {/* Saffron Glow Background */}
+//   <div className="absolute inset-0 flex items-end justify-center">
+//     <div className="w-full h-full scale-110 opacity-60">
+//       <SaffronArcs />
+//     </div>
+//   </div>
+
+//   {/* ACTUAL CLIENT IMAGE */}
+//   <div className="relative z-10 flex items-end justify-center h-full">
+//     <img 
+//       src={FounderImg} 
+//       alt="Dhruv Vasanwal" 
+//       className="w-full max-w-[450px] object-contain transform hover:scale-105 transition-transform duration-700 select-none pointer-events-none"
+//       style={{ filter: "drop-shadow(0 20px 50px rgba(0,0,0,0.5))" }}
+//     />
+//   </div>
+// </div>
+
+//           {/* ──────── RIGHT: Bio Text ──────── */}
+//           <div className="flex flex-col justify-center px-8 sm:px-14 py-12 lg:py-16">
+//             <h3 className="font-syne font-bold text-white text-[2.5rem] sm:text-[3.2rem] leading-none tracking-tighter mb-4 uppercase">
+//               {founder.name}
+//             </h3>
+//             <p style={{ color: '#F97316' }} className="font-dm font-black text-xs mb-8 tracking-[0.3em] uppercase">
+//               {founder.designation}
+//             </p>
+
+//             <div style={{ background: 'linear-gradient(to right, #F97316, transparent)' }} className="w-20 h-[3px] mb-8 rounded-full" />
+
+//             <p className="font-dm text-[#d1d5db] text-lg leading-[1.8] max-w-[540px] font-light">
+//               {founder.bio.map((seg, i) =>
+//                 seg.bold ? <B key={i}>{seg.text}</B> : <span key={i}>{seg.text}</span>
+//               )}
+//             </p>
+
+//             <div className="mt-12 pt-8 border-t border-white/5 flex items-center gap-6">
+//                <div className="flex flex-col">
+//                   <span className="text-white text-2xl font-black leading-none">2000+</span>
+//                   <span className="text-[#6b7280] text-[9px] uppercase tracking-widest mt-1">Yatris Guided</span>
+//                </div>
+//                <div className="w-px h-8 bg-white/10"></div>
+//                <div className="flex flex-col">
+//                   <span className="text-white text-2xl font-black leading-none">5+</span>
+//                   <span className="text-[#6b7280] text-[9px] uppercase tracking-widest mt-1">Years Experience</span>
+//                </div>
+//             </div>
+//           </div>
+
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+import FounderImg from "../../../../public/dhruv.png";
+
+/* ─── SEO Optimized Styles ─── */
 const GlobalStyles = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    .anim-slide { animation: fadeSlideIn .6s ease both; }
-    .anim-fade  { animation: fadeIn .8s ease both .2s; }
 
     .font-syne { font-family: 'Syne', sans-serif; }
     .font-dm   { font-family: 'DM Sans', sans-serif; }
   `}</style>
 );
 
-/* ─── Concentric Saffron Arcs (Spiritual Glow) ─── */
+/* ─── Saffron Spiritual Background ─── */
 const SaffronArcs = () => (
-  <svg viewBox="0 0 520 560" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+  <svg viewBox="0 0 520 560" fill="none" className="w-full h-full">
     <circle cx="260" cy="370" r="230" fill="#7c2d12" opacity="0.85" />
     <circle cx="260" cy="370" r="230" fill="url(#saffronGrad)" />
 
@@ -296,8 +451,8 @@ const SaffronArcs = () => (
 
     <defs>
       <radialGradient id="saffronGrad" cx="40%" cy="35%" r="65%">
-        <stop offset="0%"   stopColor="#f97316" stopOpacity="0.9" />
-        <stop offset="60%"  stopColor="#9a3412" stopOpacity="0.8" />
+        <stop offset="0%" stopColor="#f97316" stopOpacity="0.9" />
+        <stop offset="60%" stopColor="#9a3412" stopOpacity="0.8" />
         <stop offset="100%" stopColor="#000000" stopOpacity="0.6" />
       </radialGradient>
     </defs>
@@ -305,27 +460,36 @@ const SaffronArcs = () => (
 );
 
 const B = ({ children }) => (
-  <span style={{ color: '#F97316' }} className="font-bold">{children}</span>
+  <span style={{ color: '#F97316' }} className="font-bold">
+    {children}
+  </span>
 );
 
 /* ─────────────────────────────────────────────
-   MAIN COMPONENT: OUR FOUNDER (Shree Ji)
+   SEO Optimized Founder Section
 ───────────────────────────────────────────── */
+
 export default function OurInstructor() {
+
   const founder = {
     name: "Dhruv Vasanwal",
-    designation: "Founder & Spiritual Guide | 5+ Years Excellence",
+    designation: "Founder | Ujjain Mahakal Darshan & VIP Booking Guide",
     bio: [
-      { text: "With a profound vision to serve the devotees of Mahakal, " },
+      { text: "Driven by devotion and service, " },
       { text: "Dhruv Vasanwal", bold: true },
-      { text: " established " },
-      { text: "Shree Ji Divine Yatra & Darshan", bold: true },
-      { text: " in the holy city of Ujjain. Under his leadership, the organization has successfully guided more than " },
-      { text: "2000+ pilgrims", bold: true },
-      { text: " through seamless spiritual journeys." },
-      { text: " His expertise lies in " },
-      { text: "Darshan Management, Authentic Vedic Rituals, and Luxury Pilgrimage Logistics", bold: true },
-      { text: ", ensuring that every devotee experiences the divine essence of Avantika with peace and comfort." },
+      { text: " founded " },
+      { text: "Shree Ji Divine Yatra – Ujjain Mahakal Darshan Booking Services", bold: true },
+      { text: ". With years of experience assisting pilgrims visiting " },
+      { text: "Shri Mahakaleshwar Jyotirlinga Temple, Ujjain", bold: true },
+      { text: ", he ensures seamless arrangements for " },
+      { text: "VIP Darshan, Bhasma Aarti Booking, Special Pujan Vidhi, and Temple Visit Assistance", bold: true },
+      { text: "." },
+      { text: " Under his guidance, more than " },
+      { text: "2000+ devotees", bold: true },
+      { text: " have completed their Mahakal Darshan peacefully with full support for accommodation, transport, and ritual coordination." },
+      { text: " His mission is to provide trusted and organized " },
+      { text: "Ujjain Darshan Services", bold: true },
+      { text: " so that every yatri experiences the true spiritual energy of Avantika." },
     ],
   };
 
@@ -333,24 +497,27 @@ export default function OurInstructor() {
     <>
       <GlobalStyles />
 
-      <section className="w-full min-h-screen bg-black px-6 sm:px-10 lg:px-16 py-16 font-dm">
+      {/* SECTION WITH SEO HEADING */}
+      <section className="w-full min-h-screen bg-black px-6 sm:px-10 lg:px-16 py-20 font-dm">
 
-        {/* ── Top header row ── */}
-        <div className="flex items-start justify-between mb-12 max-w-7xl mx-auto">
-          <div className="anim-slide">
-            <h2 className="font-syne font-bold text-white text-5xl lg:text-7xl tracking-tighter leading-tight mb-3 uppercase">
-              The Guiding <span style={{ color: '#F97316' }}>Light</span>
-            </h2>
-            <p className="text-[#9ca3af] font-dm text-base leading-relaxed max-w-lg italic">
-              Meet the visionary behind <span className="text-white font-medium">Shree Ji Divine Yatra</span>, dedicated to making your spiritual visit to Ujjain a lifetime memory.
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto mb-16">
+
+          {/* IMPORTANT H2 FOR SEO */}
+          <h2 className="font-syne font-bold text-white text-4xl lg:text-6xl tracking-tight leading-tight uppercase mb-4">
+            Trusted <span style={{ color: '#F97316' }}>Mahakal Darshan</span> Assistance in Ujjain
+          </h2>
+
+          <p className="text-gray-400 max-w-3xl leading-relaxed text-lg">
+            Meet the founder behind one of the most reliable Mahakal Darshan Booking services in Ujjain. 
+            Dedicated to helping pilgrims with VIP Darshan, Bhasma Aarti registration, and complete temple guidance.
+          </p>
+
         </div>
 
-        {/* ── Main Founder Card ── */}
+        {/* MAIN CARD */}
         <div
           className="
-            anim-fade max-w-7xl mx-auto
+            max-w-7xl mx-auto
             bg-[#0a0a0a] rounded-[48px]
             shadow-[0_0_80px_rgba(249,115,22,0.05),0_32px_64px_rgba(0,0,0,0.8)]
             border border-white/[0.05]
@@ -360,56 +527,67 @@ export default function OurInstructor() {
           style={{ minHeight: 520 }}
         >
 
-{/* ──────── LEFT: Image + Saffron Glow ──────── */}
-<div className="relative flex items-end justify-center overflow-hidden min-h-[400px] lg:min-h-[520px]">
-  <div className="absolute inset-0 bg-[#050505]" />
-  
-  {/* Saffron Glow Background */}
-  <div className="absolute inset-0 flex items-end justify-center">
-    <div className="w-full h-full scale-110 opacity-60">
-      <SaffronArcs />
-    </div>
-  </div>
+          {/* LEFT IMAGE */}
+          <div className="relative flex items-end justify-center overflow-hidden min-h-[400px] lg:min-h-[520px]">
+            <div className="absolute inset-0 bg-[#050505]" />
 
-  {/* ACTUAL CLIENT IMAGE */}
-  <div className="relative z-10 flex items-end justify-center h-full">
-    <img 
-      src={FounderImg} 
-      alt="Dhruv Vasanwal" 
-      className="w-full max-w-[450px] object-contain transform hover:scale-105 transition-transform duration-700 select-none pointer-events-none"
-      style={{ filter: "drop-shadow(0 20px 50px rgba(0,0,0,0.5))" }}
-    />
-  </div>
-</div>
+            <div className="absolute inset-0 flex items-end justify-center">
+              <div className="w-full h-full scale-110 opacity-60">
+                <SaffronArcs />
+              </div>
+            </div>
 
-          {/* ──────── RIGHT: Bio Text ──────── */}
+            <div className="relative z-10 flex items-end justify-center h-full">
+              <img
+                src={FounderImg}
+                alt="Dhruv Vasanwal - Ujjain Mahakal Darshan Booking Founder"
+                className="w-full max-w-[450px] object-contain transform hover:scale-105 transition-transform duration-700 select-none pointer-events-none"
+                style={{ filter: "drop-shadow(0 20px 50px rgba(0,0,0,0.5))" }}
+              />
+            </div>
+          </div>
+
+          {/* RIGHT CONTENT */}
           <div className="flex flex-col justify-center px-8 sm:px-14 py-12 lg:py-16">
-            <h3 className="font-syne font-bold text-white text-[2.5rem] sm:text-[3.2rem] leading-none tracking-tighter mb-4 uppercase">
+
+            {/* H3 FOR SEO STRUCTURE */}
+            <h3 className="font-syne font-bold text-white text-[2.2rem] sm:text-[2.8rem] tracking-tight mb-4 uppercase">
               {founder.name}
             </h3>
-            <p style={{ color: '#F97316' }} className="font-dm font-black text-xs mb-8 tracking-[0.3em] uppercase">
+
+            <p style={{ color: '#F97316' }} className="font-black text-xs mb-8 tracking-[0.3em] uppercase">
               {founder.designation}
             </p>
 
             <div style={{ background: 'linear-gradient(to right, #F97316, transparent)' }} className="w-20 h-[3px] mb-8 rounded-full" />
 
-            <p className="font-dm text-[#d1d5db] text-lg leading-[1.8] max-w-[540px] font-light">
+            <p className="text-[#d1d5db] text-lg leading-[1.9] max-w-[600px] font-light">
               {founder.bio.map((seg, i) =>
                 seg.bold ? <B key={i}>{seg.text}</B> : <span key={i}>{seg.text}</span>
               )}
             </p>
 
-            <div className="mt-12 pt-8 border-t border-white/5 flex items-center gap-6">
-               <div className="flex flex-col">
-                  <span className="text-white text-2xl font-black leading-none">2000+</span>
-                  <span className="text-[#6b7280] text-[9px] uppercase tracking-widest mt-1">Yatris Guided</span>
-               </div>
-               <div className="w-px h-8 bg-white/10"></div>
-               <div className="flex flex-col">
-                  <span className="text-white text-2xl font-black leading-none">5+</span>
-                  <span className="text-[#6b7280] text-[9px] uppercase tracking-widest mt-1">Years Experience</span>
-               </div>
+            {/* TRUST SIGNALS */}
+            <div className="mt-14 pt-8 border-t border-white/5 flex items-center gap-8">
+
+              <div className="flex flex-col">
+                <span className="text-white text-3xl font-black">2000+</span>
+                <span className="text-gray-500 text-[10px] uppercase tracking-widest mt-1">
+                  Mahakal Devotees Guided
+                </span>
+              </div>
+
+              <div className="w-px h-10 bg-white/10"></div>
+
+              <div className="flex flex-col">
+                <span className="text-white text-3xl font-black">5+</span>
+                <span className="text-gray-500 text-[10px] uppercase tracking-widest mt-1">
+                  Years of Darshan Service
+                </span>
+              </div>
+
             </div>
+
           </div>
 
         </div>

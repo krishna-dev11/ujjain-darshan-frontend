@@ -104,26 +104,31 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const slides = [
   {
-    main: "Shree Ji",
-    grad: "Divine Yatra",
-    quote: "Experiencing the profound divinity of Mahakal.",
+    main: "Ujjain",
+    grad: "Mahakal Darshan Booking",
+    quote:
+      "Book Mahakal Darshan in Ujjain with complete guidance for VIP Darshan and Bhasma Aarti at Shri Mahakaleshwar Jyotirlinga.",
   },
   {
-    main: "Mahakal",
-    grad: "Darshan Seva",
-    quote: "Where your spiritual journey meets absolute tranquility.",
+    main: "Mahakaleshwar",
+    grad: "VIP & Bhasma Aarti Seva",
+    quote:
+      "Get authentic information about Mahakal VIP Darshan, Bhasma Aarti booking process, temple timings and entry rules.",
   },
   {
     main: "Sacred",
-    grad: "Pujan Vidhi",
-    quote: "Authentic rituals performed by the learned pandits of Avantika.",
+    grad: "Pujan & Ritual Services",
+    quote:
+      "Perform traditional Mahakal Pujan, Abhishek and special rituals in Ujjain guided by experienced pandits.",
   },
   {
-    main: "Holy City",
-    grad: "Stay & Logistics",
-    quote: "Seamless coordination for your once-in-a-lifetime pilgrimage.",
+    main: "Ujjain",
+    grad: "Stay, Travel & Temple Guide",
+    quote:
+      "Complete assistance for hotel booking, temple visit planning and spiritual journey in the holy city of Ujjain.",
   },
 ];
+
 
 const EliteTextSwiper = () => {
   const [current, setCurrent] = useState(0);

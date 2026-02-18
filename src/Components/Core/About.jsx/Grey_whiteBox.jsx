@@ -88,7 +88,7 @@ const spiritualFeatures = [
     heading2: "Every Devotee",
     description: "Whether you seek VIP Mahakal Darshan or local temple tours, we synchronize every detail with your spiritual schedule.",
     btnText: "Explore Packages",
-    link: "/services"
+    link: "/catalog/महाकाल-दर्शन-सेवा/6992ffc85927ac24f82a3e6e"
   },
   {
     id: 2,

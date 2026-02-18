@@ -92,32 +92,28 @@ const DivineFeature = ({ icon: Icon, label, color }) => (
 export default function SpiritualFamily() {
 
   const yatraFeatures = [
-    { icon: Sun, label: 'VIP Mahakal Darshan', color: '#F97316' }, // Saffron
-    { icon: Sparkles, label: 'Authentic Vedic Puja', color: '#FFD700' }, // Gold
-    { icon: Map, label: 'Ujjain City Tours', color: '#F97316' }, // Saffron
-    { icon: Tent, label: 'Luxury Stay Support', color: '#FFD700' }, // Gold
+    { icon: Sun, label: 'VIP Darshan Assistance', color: '#F97316' },
+    { icon: Sparkles, label: 'Vedic Puja Coordination', color: '#FFD700' },
+    { icon: Map, label: 'Ujjain Temple Tours', color: '#F97316' },
+    { icon: Tent, label: 'Hotel & Travel Support', color: '#FFD700' },
   ];
 
   return (
     <section style={{ backgroundColor: '#000000' }} className="w-full py-28 px-6 font-sans relative overflow-hidden">
       
-      {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#F97316]/5 blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
         
-        {/* Heading */}
         <h2 style={{ color: '#FFFFFF' }} className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase">
-          Join Our <span style={{ color: '#F97316' }}>Divine Yatra</span> Family
+          Ujjain <span style={{ color: '#F97316' }}>Darshan Assistance</span> Services
         </h2>
 
-        {/* Description */}
         <p style={{ color: '#9CA3AF' }} className="text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-20 italic font-light">
-          Become a part of Shree Ji Divine Yatra & Darshan. Experience the soul of Ujjain through 
-          perfectly managed spiritual protocols and sacred rituals designed for the true devotee.
+          Shree Ji Divine Yatra provides private coordination and assistance for devotees visiting Mahakaleshwar Jyotirlinga. 
+          We help with darshan guidance, puja arrangements, and pilgrimage logistics in Ujjain.
         </p>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-10 items-start justify-center">
           {yatraFeatures.map((feature, index) => (
             <DivineFeature 
@@ -128,6 +124,12 @@ export default function SpiritualFamily() {
             />
           ))}
         </div>
+
+        {/* Legal Disclaimer */}
+        <p className="text-[12px] text-gray-600 mt-16 max-w-3xl mx-auto">
+          Disclaimer: Shree Ji Divine Yatra is a private pilgrimage assistance service. 
+          We are not affiliated with Shri Mahakaleshwar Temple Authority or any government body.
+        </p>
 
       </div>
     </section>

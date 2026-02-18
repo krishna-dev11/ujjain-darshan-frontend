@@ -107,27 +107,34 @@ const AboutPage = () => {
       <div style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)' }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] blur-[150px] rounded-full pointer-events-none" />
 
       {/* Hero Section */}
-      <section className='relative z-10 pt-44 pb-16 px-6'>
-        <div className='max-w-6xl mx-auto flex flex-col items-center text-center'>
-          <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.1)' }} className="flex items-center gap-2 px-4 py-2 w-fit rounded-full border mb-8">
-            <span style={{ color: '#9CA3AF' }} className="text-[10px] font-bold tracking-[0.4em] uppercase">The Divine Vision</span>
-          </div>
+{/* Hero Section */}
+<section className='relative z-10 pt-44 pb-16 px-6'>
+  <div className='max-w-6xl mx-auto flex flex-col items-center text-center'>
+    <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.1)' }} className="flex items-center gap-2 px-4 py-2 w-fit rounded-full border mb-8">
+      <span style={{ color: '#9CA3AF' }} className="text-[10px] font-bold tracking-[0.4em] uppercase">
+        About Shree Ji Divine Yatra
+      </span>
+    </div>
 
-          <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] uppercase">
-            A Journey of Faith in <br/>
-            <Hieghlightedtext
-              color="bg-gradient-to-r from-[#F97316] to-[#FFD700] bg-clip-text text-transparent"
-              data="Ujjain Shila"
-            />
-          </h2>
+    <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] uppercase">
+      Your Trusted Darshan <br/>
+      <Hieghlightedtext
+        color="bg-gradient-to-r from-[#F97316] to-[#FFD700] bg-clip-text text-transparent"
+        data="Assistance Partner in Ujjain"
+      />
+    </h1>
 
-          <p style={{ color: '#9CA3AF' }} className="text-lg md:text-xl max-w-3xl leading-relaxed mb-20 font-light italic">
-            With 5+ years of spiritual excellence, Shree Ji Divine Yatra specializes in providing seamless 
-            Mahakal Darshan, Vedic Rituals, and holy city tours, ensuring every devotee experiences 
-            the profound divinity of Avantika.
-          </p>
-        </div>
-      </section>
+    <p style={{ color: '#9CA3AF' }} className="text-lg md:text-xl max-w-3xl leading-relaxed mb-20 font-light italic">
+      Founded in 2021, Shree Ji Divine Yatra provides structured assistance for 
+      Mahakal VIP Darshan, Bhasma Aarti coordination, authentic Vedic rituals, 
+      Omkareshwar Yatra, and spiritual city tours in Ujjain.  
+      <br/><br/>
+      With over 2000+ pilgrims guided, our mission is simple — 
+      to ensure every devotee experiences a smooth, peaceful, and spiritually fulfilling journey.
+    </p>
+  </div>
+</section>
+
 
       {/* Quote & Story */}
       <section style={{ backgroundColor: 'rgba(255,255,255,0.01)' }} className='relative z-10 backdrop-blur-md py-16 border-y border-white/5'>

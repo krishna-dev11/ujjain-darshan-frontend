@@ -1339,10 +1339,29 @@ const ServiceHub = () => {
       
       {/* ── HEADER ── */}
       <div className="max-w-7xl mx-auto mb-16 relative z-10">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-px bg-[#F97316]" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#F97316]">Elite Yatra Protocols</span>
-        </motion.div>
+<motion.div className="max-w-7xl mx-auto mt-20 p-10 rounded-[3rem] bg-gradient-to-br from-[#F97316]/10 to-transparent border border-[#F97316]/20 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-8">
+  <div>
+    <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
+      Plan Your Mahakal Visit with Ease
+    </h2>
+    <p className="text-gray-500 italic mt-1">
+      Get private booking guidance & pilgrimage coordination in Ujjain.
+    </p>
+    <p className="text-[11px] text-gray-600 mt-2">
+      We are not the official website of Shri Mahakaleshwar Temple.
+    </p>
+  </div>
+
+  <div className="flex gap-4">
+    <button
+      onClick={handleWhatsApp}
+      className="px-8 py-4 bg-[#F97316] text-black font-black rounded-full uppercase tracking-widest text-xs hover:scale-105 transition-transform active:scale-95 shadow-[0_0_30px_rgba(249,115,22,0.3)]"
+    >
+      Booking Inquiry
+    </button>
+  </div>
+</motion.div>
+
 
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
           <div className="max-w-2xl">

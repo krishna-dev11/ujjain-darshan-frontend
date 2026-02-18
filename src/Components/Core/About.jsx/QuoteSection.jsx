@@ -37,14 +37,15 @@ const QuoteSection = () => {
       {/* Background Aura Glow */}
       <div className="absolute inset-0 bg-[#F97316]/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
-      <p style={{ color: '#FFFFFF' }} className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tighter uppercase relative z-10">
-        "Faith is the light that guides your path. At Shree Ji Divine Yatra, 
-        <Hieghlightedtext color="bg-gradient-to-r from-[#F97316] to-[#FFD700] bg-clip-text text-transparent px-3" data="every devotee is a guest of Mahakal" />. 
-        We ensure that your spiritual journey to Ujjain is filled with 
-        <Hieghlightedtext data="peaceful darshan" color="text-[#F97316] px-2 italic" /> and 
-        <Hieghlightedtext color="bg-gradient-to-r from-[#FFFFFF] to-[#9CA3AF] bg-clip-text text-transparent px-2 underline" data="sacred memories" /> 
-        through our personalized and divine service protocol."
-      </p>
+<p style={{ color: '#FFFFFF' }} className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tighter uppercase relative z-10">
+  "A pilgrimage to Ujjain should be remembered for devotion — not confusion. 
+  At Shree Ji Divine Yatra, 
+  <Hieghlightedtext color="bg-gradient-to-r from-[#F97316] to-[#FFD700] bg-clip-text text-transparent px-3" data="every devotee receives structured darshan support" />. 
+  We handle coordination, logistics, and ritual scheduling so that your focus remains on 
+  <Hieghlightedtext data="Mahakal's blessings" color="text-[#F97316] px-2 italic" /> 
+  and a spiritually enriching experience."
+</p>
+
       
       <div className="mt-12 flex items-center gap-4 opacity-30">
           <div className="h-px w-12 bg-white"></div>

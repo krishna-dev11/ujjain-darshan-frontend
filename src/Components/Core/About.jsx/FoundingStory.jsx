@@ -105,8 +105,12 @@ const academyStory = [
     id: 1,
     type: "Text",
     heading: "5 Years of Devoted Service",
-    description1: "Shree Ji Divine Yatra was founded by Dhruv Vasanwal with a sacred intent — to bridge the gap between devotees and divinity. We understand that visiting Ujjain is a once-in-a-lifetime spiritual milestone for many, and we strive to make it effortless and profound.",
-    description2: "From the mystical Bhasma Aarti to the serene banks of Shipra, our protocol ensures that you focus only on your prayers while we manage every logistic node. We believe that 'Atithi Devo Bhava' is the core of our spiritual hospitality."
+    description1:
+"Shree Ji Divine Yatra was established by Dhruv Vasanwal with the vision of simplifying the Mahakal pilgrimage experience. Many devotees visit Ujjain from across India seeking VIP Darshan, Bhasma Aarti guidance, or authentic puja rituals — yet often face booking confusion and time constraints.",
+
+description2:
+"Our team focuses on structured assistance, verified ritual coordination, hotel support, and guided temple tours. By managing operational details efficiently, we ensure that devotees can immerse themselves fully in prayer and spiritual reflection during their visit to Mahakaleshwar Jyotirlinga."
+
   },
   {
     id: 2,
