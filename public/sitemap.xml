@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Mahakal Darshan Seva -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/catalog/महाकाल-दर्शन-सेवा/6992ffc85927ac24f82a3e6e</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Vishesh Pooja Seva -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/catalog/विशेष-पूजा-सेवा/699300235927ac24f82a3e77</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Ujjain Mandir Darshan -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/catalog/उज्जैन-मंदिर-दर्शन/6993000b5927ac24f82a3e71</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Vishesh Pooja & Shanti Anushthan -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/catalog/विशेष-पूजा-एवं-शांति-अनुष्ठान/699300235927ac24f82a3e77</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Hotel & Stay Services -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/catalog/होटल-एवं-आवास-सुविधा/6993002c5927ac24f82a3e7a</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Vehicle & Guide Services -->
+  <url>
+    <loc>https://www.ujjainmahakaldarshnabooking.in/catalog/वाहन-एवं-गाइड-सेवा/699300385927ac24f82a3e7d</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
