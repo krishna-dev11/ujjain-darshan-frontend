@@ -46,10 +46,34 @@ import React from 'react'
 import ModernFooter from '../Components/Core/Home/ModernFooter'
 import TestimonialSlider from '../Components/Core/Home/Testimonial/TestimonialSlider'
 import GetInTouchSection from '../Components/Core/About.jsx/GetInTouchSection'
+import { Helmet } from "react-helmet-async";
+
+
 
 const ContactUsPage = () => {
   return (
     <div className='w-full bg-black'>
+        
+        <Helmet>
+  <title>Contact Shree Ji Divine Yatra | Mahakal Darshan Booking Assistance</title>
+
+  <meta 
+    name="description"
+    content="Contact Shree Ji Divine Yatra for Mahakal VIP Darshan assistance, Bhasma Aarti coordination and spiritual tour services in Ujjain."
+  />
+
+  <meta 
+    name="keywords"
+    content="Mahakal Darshan Contact, Ujjain Darshan Booking Help, Bhasma Aarti Assistance, VIP Darshan Ujjain Contact"
+  />
+
+  <link 
+    rel="canonical"
+    href="https://www.ujjainmahakaldarshnabooking.in/contact"
+  />
+</Helmet>
+
+        
         {/* Contact Information & Form Section */}
         <div className='w-full mx-auto justify-between'>
            <GetInTouchSection/>

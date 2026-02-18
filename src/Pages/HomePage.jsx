@@ -27,6 +27,9 @@ import ModernFooter from "../Components/Core/Home/ModernFooter";
 import HeroSection from "../Components/Core/Home/HeroSection";
 import ServiceHub from "../Components/Core/Home/ServiceHub";
 // import GradientInteractiveBox from "../Components/Common/GradientInteractiveBox";
+import { Helmet } from "react-helmet-async";
+
+
 
 const HomePage = () => {
 
@@ -37,6 +40,29 @@ const HomePage = () => {
     // wrapperh-   h-[6631px]
     <div className=" w-[100%] translate-y-20 flex flex-col  bg-black  overflow-x-hidden m-0 p-0 box-border  ">
       {/* nav  */}
+
+      <Helmet>
+  <title>Mahakal VIP Darshan Booking Assistance in Ujjain | Shree Ji Divine Yatra</title>
+
+  <meta 
+    name="description"
+    content="Book Mahakal VIP Darshan, Bhasma Aarti assistance, Omkareshwar Yatra and Vedic rituals in Ujjain. Private darshan coordination service with 2000+ pilgrims guided."
+  />
+
+  <meta 
+    name="keywords"
+    content="Mahakal VIP Darshan Booking, Bhasma Aarti Ujjain, Mahakal Darshan Ujjain, Omkareshwar Yatra, Ujjain Darshan Packages"
+  />
+
+  <link 
+    rel="canonical"
+    href="https://www.ujjainmahakaldarshnabooking.in/"
+  />
+
+  <meta property="og:title" content="Mahakal VIP Darshan Assistance | Ujjain Booking Services" />
+  <meta property="og:description" content="Private darshan coordination for Mahakaleshwar temple in Ujjain." />
+</Helmet>
+
      
 
     <div className=" mx-auto pb-5 w-[98%]"><HeroSection/></div>

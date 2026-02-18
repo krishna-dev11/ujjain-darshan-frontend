@@ -68,18 +68,93 @@
 
 
 
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { GetCategoryWiseCoursesData } from "../Services.jsx/Operations/CoursesAPI";
+// import CategoryWiseCoursesPageTopPart from "../Components/Core/Catalog/CategoryWiseCoursesPageTopPart";
+// import { FiLoader, FiSun } from "react-icons/fi";
+// import ModernFooter from "../Components/Core/Home/ModernFooter";
+// import { Helmet } from "react-helmet-async";
+
+
+// const DisplayCategoryWiseCourses = () => {
+//   const { categoryName, categoryId } = useParams();
+//   const dispatch = useDispatch();
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const getCategoryCourses = async () => {
+//       try {
+//         await dispatch(GetCategoryWiseCoursesData(categoryId));
+//       } catch (error) {
+//         console.log(error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     getCategoryCourses();
+//   }, [categoryId, categoryName, dispatch]);
+
+//   if (loading) {
+//     return (
+//       <div className="flex flex-col items-center justify-center h-screen bg-[#000] gap-4">
+//         <div className="relative">
+//            {/* Loader changed to Saffron for Temple Theme */}
+//            <div className="w-16 h-16 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
+//            <FiSun className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-400" size={24} />
+//         </div>
+//         <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 animate-pulse">व्यवस्था की जा रही है...</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="relative w-full min-h-screen bg-[#000] font-sans pt-16">
+//       {/* Background Watermark - Changed to SERVICES */}
+//       <div className="absolute top-[10%] left-[-5%] select-none pointer-events-none opacity-[0.015] z-0 overflow-hidden">
+//         <h1 className="text-[20rem] font-bold uppercase tracking-widest leading-none">SERVICES</h1>
+//       </div>
+
+//       <div className="relative z-10">
+//         <CategoryWiseCoursesPageTopPart />
+//         <div className="mt-20">
+//           <ModernFooter />
+//         </div>
+//       </div>
+      
+//       {/* Global Accent Glow - Changed to Orange-Saffron */}
+//       <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/5 blur-[120px] rounded-full pointer-events-none" />
+//     </div>
+//   );
+// };
+
+// export default DisplayCategoryWiseCourses;
+
+
+
+
+
+
+
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { GetCategoryWiseCoursesData } from "../Services.jsx/Operations/CoursesAPI";
 import CategoryWiseCoursesPageTopPart from "../Components/Core/Catalog/CategoryWiseCoursesPageTopPart";
-import { FiLoader, FiSun } from "react-icons/fi";
+import { FiSun } from "react-icons/fi";
 import ModernFooter from "../Components/Core/Home/ModernFooter";
+import { Helmet } from "react-helmet-async";
 
 const DisplayCategoryWiseCourses = () => {
   const { categoryName, categoryId } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
+  // 🔥 URL decode for Hindi names
+  const decodedCategory = decodeURIComponent(categoryName || "")
+    .replace(/-/g, " ");
 
   useEffect(() => {
     const getCategoryCourses = async () => {
@@ -98,32 +173,70 @@ const DisplayCategoryWiseCourses = () => {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-[#000] gap-4">
         <div className="relative">
-           {/* Loader changed to Saffron for Temple Theme */}
-           <div className="w-16 h-16 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
-           <FiSun className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-400" size={24} />
+          <div className="w-16 h-16 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
+          <FiSun className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-400" size={24} />
         </div>
-        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 animate-pulse">व्यवस्था की जा रही है...</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 animate-pulse">
+          व्यवस्था की जा रही है...
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full min-h-screen bg-[#000] font-sans pt-16">
-      {/* Background Watermark - Changed to SERVICES */}
-      <div className="absolute top-[10%] left-[-5%] select-none pointer-events-none opacity-[0.015] z-0 overflow-hidden">
-        <h1 className="text-[20rem] font-bold uppercase tracking-widest leading-none">SERVICES</h1>
-      </div>
+    <>
+      {/* 🔥 SEO Helmet Start */}
+      <Helmet>
+        <title>
+          {decodedCategory} Booking in Ujjain | Mahakal Darshan Services
+        </title>
 
-      <div className="relative z-10">
-        <CategoryWiseCoursesPageTopPart />
-        <div className="mt-20">
-          <ModernFooter />
+        <meta
+          name="description"
+          content={`Book ${decodedCategory} in Ujjain with Shree Ji Divine Yatra. Trusted assistance for Mahakal Darshan, Bhasma Aarti, VIP Entry, Puja Services & Spiritual Tours.`}
+        />
+
+        <meta
+          name="keywords"
+          content={`${decodedCategory}, ${decodedCategory} booking Ujjain, Mahakal ${decodedCategory}, Ujjain Darshan booking, Mahakal VIP Darshan, Bhasma Aarti booking`}
+        />
+
+        <link
+          rel="canonical"
+          href={`https://www.ujjainmahakaldarshnabooking.in/catalog/${categoryName}/${categoryId}`}
+        />
+
+        {/* Open Graph */}
+        <meta property="og:title" content={`${decodedCategory} Booking in Ujjain`} />
+        <meta
+          property="og:description"
+          content={`Official assistance for ${decodedCategory} in Ujjain. Smooth Darshan & Ritual Booking Support.`}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://www.ujjainmahakaldarshnabooking.in/catalog/${categoryName}/${categoryId}`}
+        />
+      </Helmet>
+      {/* 🔥 SEO Helmet End */}
+
+      <div className="relative w-full min-h-screen bg-[#000] font-sans pt-16">
+        <div className="absolute top-[10%] left-[-5%] select-none pointer-events-none opacity-[0.015] z-0 overflow-hidden">
+          <h1 className="text-[20rem] font-bold uppercase tracking-widest leading-none">
+            SERVICES
+          </h1>
         </div>
+
+        <div className="relative z-10">
+          <CategoryWiseCoursesPageTopPart />
+          <div className="mt-20">
+            <ModernFooter />
+          </div>
+        </div>
+
+        <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/5 blur-[120px] rounded-full pointer-events-none" />
       </div>
-      
-      {/* Global Accent Glow - Changed to Orange-Saffron */}
-      <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/5 blur-[120px] rounded-full pointer-events-none" />
-    </div>
+    </>
   );
 };
 

@@ -93,11 +93,42 @@ import Grey_whiteBox from '../Components/Core/About.jsx/Grey_whiteBox'
 import ContactForm from '../Components/Core/About.jsx/ContactForm';
 import SocialStats from '../Components/Core/Home/SocialStats';
 import ModernFooter from '../Components/Core/Home/ModernFooter'
+import { Helmet } from "react-helmet-async";
+
 
 const AboutPage = () => {
   return (
     <div style={{ backgroundColor: '#000000' }} className='relative w-full text-white overflow-x-hidden font-sans m-0 p-0 box-border'>
       
+      
+  <Helmet>
+    <title>About Shree Ji Divine Yatra | Mahakal Darshan Assistance in Ujjain</title>
+
+    <meta 
+      name="description" 
+      content="Learn about Shree Ji Divine Yatra, a private darshan assistance organization in Ujjain providing VIP Mahakal Darshan, Bhasma Aarti coordination, Vedic rituals, Omkareshwar Yatra and spiritual tours."
+    />
+
+    <meta 
+      name="keywords" 
+      content="Mahakal Darshan Assistance, VIP Darshan Ujjain, Bhasma Aarti Booking Ujjain, Mahakal Puja Services, Omkareshwar Yatra, Ujjain Darshan Packages"
+    />
+
+    <meta name="robots" content="index, follow" />
+
+    <link 
+      rel="canonical" 
+      href="https://www.ujjainmahakaldarshnabooking.in/about" 
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="About Shree Ji Divine Yatra | Ujjain Mahakal Darshan Assistance" />
+    <meta property="og:description" content="Private darshan assistance provider in Ujjain offering VIP entry coordination, Bhasma Aarti guidance and Vedic rituals." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ujjainmahakaldarshnabooking.in/about" />
+  </Helmet>
+
+
       {/* Background Watermark - "MAHAKAL" */}
       <div className="absolute top-[5%] left-1/2 -translate-x-1/2 select-none pointer-events-none z-0">
         <h1 style={{ color: 'rgba(255, 255, 255, 0.01)' }} className="text-[18rem] md:text-[22rem] font-bold tracking-widest uppercase leading-none">MAHAKAL</h1>

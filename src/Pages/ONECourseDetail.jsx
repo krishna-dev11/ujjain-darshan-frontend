@@ -412,6 +412,9 @@ import GetAvgRating from "../Utilities/avgRating";
 import copy from "copy-to-clipboard";
 import ReactStars from "react-stars";
 import ModernFooter from "../Components/Core/Home/ModernFooter";
+import { Helmet } from "react-helmet-async";
+
+
 
 const ONECourseDetail = () => {
   const { courseDetails } = useSelector((state) => state.Category);
@@ -491,6 +494,25 @@ const ONECourseDetail = () => {
   return (
     <div className="min-h-screen bg-[#000000] text-[#ffffff] font-sans pt-16">
       
+
+
+     <Helmet>
+  <title>
+    {courseDetails?.courseName} | Mahakal Darshan Assistance in Ujjain
+  </title>
+
+  <meta 
+    name="description"
+    content={courseDetails?.courseDescription}
+  />
+
+  <link
+    rel="canonical"
+    href={`https://www.ujjainmahakaldarshnabooking.in/catalog/${courseDetails?.slug}`}
+  />
+</Helmet>
+
+
       {/* ─── SPIRITUAL HERO SECTION ─── */}
       <div className="relative py-16 px-6 md:px-12 border-b border-[#ffffff]/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start relative z-10">

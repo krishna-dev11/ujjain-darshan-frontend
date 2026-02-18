@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FiVideo, FiArrowRight, FiClock, FiActivity } from "react-icons/fi";
+import { Helmet } from "react-helmet-async";
+
 
 export default function StudentClassCards() {
   const navigate = useNavigate();
@@ -12,6 +14,11 @@ export default function StudentClassCards() {
   return (
     <div className="relative min-h-[400px] w-full flex items-center justify-center p-6 font-sans overflow-hidden">
       
+        <Helmet>
+    <title>Student Live Class | Shree Ji Divine Yatra</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </Helmet>
+
       {/* ─── Background Cyber-Glow  ─── */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
 
