@@ -18,7 +18,7 @@ import Fotter from "../Components/Common/Fotter";
 import BackGroundGradient from "../Components/Common/BackGroundGradient";
 // import { useSelector } from "react-redux";
 // import toast from "react-hot-toast";
-import WebGeneratedHero from "../Components/Core/Home/FloatCard";
+import FloatCard from "../Components/Core/Home/FloatCard";
 import TestimonialSlider from "../Components/Core/Home/Testimonial/TestimonialSlider";
 import OurInstructor from "../Components/Core/Home/OurInstructor";
 import SocialStats from "../Components/Core/Home/SocialStats";
@@ -68,7 +68,7 @@ const HomePage = () => {
     <div className=" mx-auto pb-5 w-[98%]"><HeroSection/></div>
  
 {/* why to choose */}
-    <WebGeneratedHero/>
+    <FloatCard/>
 
     <TestimonialSlider/>
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import StudentClassCards from "./StudentClassCards";
+import DevoteeServiceCards from "./DevoteeServiceCards";
 
 const EnterRoom = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const EnterRoom = () => {
 
   const HandleEnterRoom = (event) => {
     console.log(event.EnterCode);
-    navigate(`/EnrolledCourses/${event.EnterCode}`);
+    navigate(`/BookedServices/${event.EnterCode}`);
   };
 
   return (

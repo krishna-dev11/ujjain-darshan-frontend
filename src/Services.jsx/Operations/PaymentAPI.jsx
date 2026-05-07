@@ -1,17 +1,17 @@
 import toast from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 // import { setLoading } from "../../Slices/Auth";
-import { studentEndpoints } from "../apis";
+import { customerPaymentEndpoints } from "../apis";
 import rzpLogo from "../../assets/Logo/rzp_logo.png";
 import { EmtingCartAfterBuying } from "./CartAPI";
 // import { useSelector } from "react-redux";
 import { setUser } from "../../Slices/Profile";
 
 const {
-  COURSE_PAYMENT_API,
-  COURSE_VERIFY_API,
+  SERVICE_PAYMENT_API,
+  SERVICE_VERIFY_API,
   SEND_PAYMENT_SUCCESS_EMAIL_API,
-} = studentEndpoints;
+} = customerPaymentEndpoints;
 
 // use To load Razorpay Script
 function loadScript(src) {
@@ -52,7 +52,7 @@ export async function buyCourse(
     //initiate the order
     const orderResponse = await apiConnector(
       "POST",
-      COURSE_PAYMENT_API,
+      SERVICE_PAYMENT_API,
       { CoursesIds, totalAmount },
       {
         Authorization: `Bearer ${token}`,
@@ -142,7 +142,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch, user) {
   const toastId = toast.loading("Verifying Payment...");
 
   try {
-    const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
+    const response = await apiConnector("POST", SERVICE_VERIFY_API, bodyData, {
       Authorization: `Bearer ${token}`,
     });
 
@@ -159,7 +159,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch, user) {
 
     await EmtingCartAfterBuying(user._id, token);
 
-    navigate("/EnrolledCourses/active-Courses");
+    navigate("/BookedServices/active-Courses");
   } catch (error) {
     console.log("PAYMENT VERIFY ERROR: ", error);
     toast.error("Could not verify payment");

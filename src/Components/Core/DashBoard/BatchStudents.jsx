@@ -193,7 +193,7 @@ const BatchStudents = () => {
 
                             <button
                               onClick={() =>
-                                navigate(`/EnrolledCourses/collect-installment/${batch._id}/${student._id}`)
+                                navigate(`/BookedServices/collect-installment/${batch._id}/${student._id}`)
                               }
                               className="bg-[#ffffff] text-[#000000] px-3 py-1.5 rounded-lg text-[8px] font-black uppercase tracking-widest hover:bg-[#10b981] transition-all"
                             >

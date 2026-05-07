@@ -100,7 +100,7 @@
 //       },
 //       {
 //         name: "Enrolled Courses",
-//         path: `/EnrolledCourses/active-Courses`,
+//         path: `/BookedServices/active-Courses`,
 //         icon: "FaBook",
 //       },
 //       {
@@ -120,25 +120,25 @@
 
 
 
-// export const BuyedCoursessidebarLinks = [
+// export const BookedServicessidebarLinks = [
 //   {
 //     name: "Active Courses",
-//     path: "/EnrolledCourses/active-Courses",
+//     path: "/BookedServices/active-Courses",
 //     icon: "FaBook",
 //   },
 //   {
 //     name: "Bookmarks",
-//     path: "/EnrolledCourses/book-marks",
+//     path: "/BookedServices/book-marks",
 //     icon: "FaBookmark",
 //   },
 //   {
 //     name: "Community",
-//     path: "/EnrolledCourses/community",
+//     path: "/BookedServices/community",
 //     icon: "FaRegComments",
 //   },
 //   {
 //     name: "Students",
-//     path: "/EnrolledCourses/batch-students/:batchId",
+//     path: "/BookedServices/batch-students/:batchId",
 //     icon: ""
 //   },
 
@@ -216,7 +216,7 @@ export const sidebarLinks = [
       },
       // {
       //   name: "My Bookings",
-      //   path: `/EnrolledCourses/active-Courses`,
+      //   path: `/BookedServices/active-Courses`,
       //   icon: "FaPrayingHands",
       // },
       // {
@@ -233,25 +233,25 @@ export const sidebarLinks = [
   },
 ];
 
-export const BuyedCoursessidebarLinks = [
+export const BookedServicessidebarLinks = [
   // {
   //   name: "Active Darshan",
-  //   path: "/EnrolledCourses/active-Courses",
+  //   path: "/BookedServices/active-Courses",
   //   icon: "FaMapMarkedAlt",
   // },
   // {
   //   name: "Saved Protocols",
-  //   path: "/EnrolledCourses/book-marks",
+  //   path: "/BookedServices/book-marks",
   //   icon: "FaBookmark",
   // },
   // {
   //   name: "Devotee Sangat",
-  //   path: "/EnrolledCourses/community",
+  //   path: "/BookedServices/community",
   //   icon: "FaUsers",
   // },
   {
     name: "Yatri Directory",
-    path: "/EnrolledCourses/batch-students/:batchId",
+    path: "/BookedServices/batch-students/:batchId",
     icon: "FaAddressBook"
   },
 ];

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination, Navigation, Keyboard, Autoplay } from "swiper/modules"; 
 import "../../../App.css";
-import { GetAllRatingAndReview } from "../../../Services.jsx/Operations/CoursesAPI";
+import { GetAllRatingAndReview } from "../../../Services.jsx/Operations/ServicesAPI";
 import { useDispatch, useSelector } from "react-redux";
 import RatingReviewCard from "./RatingReviewCard";
 // import { Error } from "mongoose";
@@ -16,7 +16,7 @@ const ReviwSlider = () => {
 
     const [loading , setloading ] = useState(true)
 
-    const { RatingAndReviewData } = useSelector((state) => state.Course);
+    const { RatingAndReviewData } = useSelector((state) => state.service);
 
 
     const dispatch = useDispatch()

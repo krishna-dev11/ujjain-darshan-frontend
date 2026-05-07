@@ -15,26 +15,26 @@ import OpenRoute from "./Components/Core/Auth/OpenRoute";
 import Dashboard from "./Pages/Dashboard";
 import PrivateRoute from "./Components/Core/Auth/PrivateRoute";
 import MyProfile from "./Components/Core/DashBoard/RightPart/MyProfile";
-// import EnrolledCourses from "./Components/Core/DashBoard/RightPart/EnrolledCoursesfolder/EnrolledCourses";
+// import BookedServices from "./Components/Core/DashBoard/RightPart/BookedServicesfolder/BookedServices";
 import PurchaseHistory from "./Components/Core/DashBoard/RightPart/PurchaseHistory";
-import WishList from "./Components/Core/DashBoard/RightPart/WishList";
+import SavedServices from "./Components/Core/DashBoard/RightPart/SavedServices";
 import SettingIndex from "./Components/Core/DashBoard/RightPart/Settings/SettingIndex";
-import AddNewCourse from "./Components/Core/DashBoard/RightPart/AddCourse/AddNewCourse";
+import AddNewService from "./Components/Core/DashBoard/RightPart/AddService/AddNewService";
 import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./Utilities/Constaints";
-import DisplayMyCourses from "./Components/Core/DashBoard/RightPart/MyCourses/DisplayMyCourses";
-import EditPreviousCourse from "./Components/Core/DashBoard/RightPart/EditCourse/EditPreviousCourse";
+import DisplayMyServices from "./Components/Core/DashBoard/RightPart/MyServices/DisplayMyServices";
+import EditPreviousService from "./Components/Core/DashBoard/RightPart/EditService/EditPreviousService";
 import NotFound from "./Components/Common/NotFound";
-import DisplayCatagoryWiseCourses from "./Pages/DisplayCatagoryWiseCourses";
-import ONECourseDetail from "./Pages/ONECourseDetail";
-import EnrolledCourses from "./Pages/EnrolledCourses";
-import ActiveCourseList from "./Components/Core/EnrolledCourses/Right/ActiveCourseList";
-import Bookmarks from "./Components/Core/EnrolledCourses/Right/Bookmarks";
-import Community from "./Components/Core/EnrolledCourses/Right/Community";
-import ViewCourse from "./Pages/ViewCourse";
-import ViewLectureVideo from "./Components/Core/ViewCourse/Right/ViewLectureVideo";
-import StudentCourses from "./Components/Core/DashBoard/RightPart/StudentCourses";
-import InstructorDashboard from "./Components/Core/DashBoard/RightPart/InstructorDasboard/InstructorDashboard";
+import DisplayCategoryWiseServices from "./Pages/DisplayCategoryWiseServices";
+import OneServiceDetail from "./Pages/OneServiceDetail";
+import BookedServices from "./Pages/BookedServices";
+import ActiveServiceList from "./Components/Core/BookedServices/Right/ActiveServiceList";
+import Bookmarks from "./Components/Core/BookedServices/Right/Bookmarks";
+import Community from "./Components/Core/BookedServices/Right/Community";
+import ViewService from "./Pages/ViewService";
+import ViewServiceMedia from "./Components/Core/ViewService/Right/ViewServiceMedia";
+import CustomerServices from "./Components/Core/DashBoard/RightPart/CustomerServices";
+import BusinessDashboard from "./Components/Core/DashBoard/RightPart/BusinessDashboard/BusinessDashboard";
 import EnterRoom from "./Pages/EnterRoom";
 import LiveClass from "./Pages/LiveClass";
 import StartLive from "./Components/Core/DashBoard/RightPart/StartLive";
@@ -48,7 +48,7 @@ import MarkNotInterested from "./Components/Core/DashBoard/WalkIn/MarkNotInteres
 import ExpensesDashboard from "./Components/Core/DashBoard/ExpensesDashboard";
 import AddTestimonial from "./Components/Core/DashBoard/Testimonials/AddTestimonial";
 import TestimonialsDashboard from "./Components/Core/DashBoard/Testimonials/TestimonialsDashboard";
-import CollectInstallment from "./Components/Core/EnrolledCourses/Right/CollectInstallment";
+import CollectInstallment from "./Components/Core/BookedServices/Right/CollectInstallment";
 import WhatsAppChat from "./Components/Common/WhatsAppChat";
 
 function App() {
@@ -70,7 +70,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactUsPage />} />
-        <Route path="/CourseDetails/:CourseId" element={<ONECourseDetail />}/>
+        <Route path="/CourseDetails/:CourseId" element={<OneServiceDetail />}/>
 
 
 
@@ -78,7 +78,7 @@ function App() {
       
 
 
-        <Route path="/catalog/:categoryName/:categoryId" element={<DisplayCatagoryWiseCourses />} />
+        <Route path="/catalog/:categoryName/:categoryId" element={<DisplayCategoryWiseServices />} />
 
         {/* OPEN Routes */}
         <Route
@@ -157,20 +157,20 @@ function App() {
                 path="/dashboard/purchase-history"
                 element={<PurchaseHistory />}
               />
-              <Route path="/dashboard/wishlist" element={<WishList />} />
-              <Route path="/dashboard/courses" element={<StudentCourses/>} />
+              <Route path="/dashboard/wishlist" element={<SavedServices />} />
+              <Route path="/dashboard/courses" element={<CustomerServices/>} />
             </>
           )}
 
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
-              <Route path="/dashboard/add-course" element={<AddNewCourse />} />
+              <Route path="/dashboard/add-course" element={<AddNewService />} />
               <Route
                 path="/dashboard/my-courses"
-                element={<DisplayMyCourses />}
+                element={<DisplayMyServices />}
               />
-              <Route path="/dashboard/edit-course" element={<EditPreviousCourse />} />
-              <Route path="/dashboard/instructor" element={<InstructorDashboard/>}/>
+              <Route path="/dashboard/edit-course" element={<EditPreviousService />} />
+              <Route path="/dashboard/instructor" element={<BusinessDashboard/>}/>
               <Route path="/dashboard/StartLive/:CourseId" element={<StartLive />} />
               <Route path="/dashboard/:RoomId" element={<GoLive/>}/>
               <Route path="/dashboard/add-walkin" element={<AddWalkInStudent />} />
@@ -195,18 +195,18 @@ function App() {
         <Route
           element={
             <PrivateRoute>
-              <EnrolledCourses />
+              <BookedServices />
             </PrivateRoute>
           }
         >
-          <Route path="/EnrolledCourses/active-Courses" element={<ActiveCourseList/>} />
-          <Route path="/EnrolledCourses/book-marks" element={<Bookmarks/>} />
-          <Route path="/EnrolledCourses/community" element={<Community/>} />
-          <Route path="/EnrolledCourses/EnterRoom" element={<EnterRoom/>}/>
-          <Route path="/EnrolledCourses/:RoomId" element={<LiveClass/>}/>
+          <Route path="/BookedServices/active-Courses" element={<ActiveServiceList/>} />
+          <Route path="/BookedServices/book-marks" element={<Bookmarks/>} />
+          <Route path="/BookedServices/community" element={<Community/>} />
+          <Route path="/BookedServices/EnterRoom" element={<EnterRoom/>}/>
+          <Route path="/BookedServices/:RoomId" element={<LiveClass/>}/>
 
-          <Route path="/EnrolledCourses/batch-students/:batchId" element={<BatchStudents />} />
-          <Route path="/EnrolledCourses/collect-installment/:batchId/:studentId" element={<CollectInstallment/>} />
+          <Route path="/BookedServices/batch-students/:batchId" element={<BatchStudents />} />
+          <Route path="/BookedServices/collect-installment/:batchId/:studentId" element={<CollectInstallment/>} />
 
 
         </Route>
@@ -215,11 +215,11 @@ function App() {
         <Route
           element={
             <PrivateRoute>
-              <ViewCourse/>
+              <ViewService/>
             </PrivateRoute>
           }
         >
-          <Route path="/course/:CourseId/section/:SectionId/subSection/:SubSectionId" element={<ViewLectureVideo/>} />
+          <Route path="/course/:CourseId/section/:SectionId/subSection/:SubSectionId" element={<ViewServiceMedia/>} />
 
         </Route>
 

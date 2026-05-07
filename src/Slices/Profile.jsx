@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     user : localStorage.getItem("user") ? (JSON.parse(localStorage.getItem("user"))) : null,
     Loading : false,
-    InstructorDashboardData : [],
+    BusinessDashboardData : [],
     InstructorCoursesData:[]
 }
 
@@ -18,8 +18,8 @@ const initialState = {
         setLoading(state , action){
           state.Loading = action.payload
         },
-        setInstructorDashboardData(state , action){
-          state.InstructorDashboardData = action.payload
+        setBusinessDashboardData(state , action){
+          state.BusinessDashboardData = action.payload
         },
         setInstructorCoursesForDashboardData(state , action){
           state.InstructorCoursesData = action.payload
@@ -28,5 +28,5 @@ const initialState = {
       }
       })
 
-  export const { setUser ,setLoading , setInstructorDashboardData , setInstructorCoursesForDashboardData} = profileSlice.actions
+  export const { setUser ,setLoading , setBusinessDashboardData , setInstructorCoursesForDashboardData} = profileSlice.actions
   export default profileSlice.reducer

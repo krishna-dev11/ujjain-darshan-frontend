@@ -1,15 +1,15 @@
 import toast from "react-hot-toast";
-import { courseEndpoints, profileEndpoints, settingsEndpoints } from "../apis";
-import { setInstructorCoursesForDashboardData, setInstructorDashboardData, setLoading, setUser } from "../../Slices/Profile";
+import { serviceEndpoints, profileEndpoints, settingsEndpoints } from "../apis";
+import { setInstructorCoursesForDashboardData, setBusinessDashboardData, setLoading, setUser } from "../../Slices/Profile";
 import { apiConnector } from "../apiConnector";
 import { settoken } from "../../Slices/Auth";
-import { setCategories } from "../../Slices/Categories";
-import { setCourse, setEditCourse, setStep } from "../../Slices/Courses";
+import { setCategories } from "../../Slices/ServiceCategories";
+import { setService, setEditService, setStep } from "../../Slices/Services";
 import {
   SetaddSubSection,
   SeteditSubSection,
   SetviewSubSection,
-} from "../../Slices/SubSection";
+} from "../../Slices/ServiceMedia";
 // import { useSelector } from "react-redux";
 
 const {
@@ -21,21 +21,21 @@ const {
 
 const {
   COURSE_CATEGORIES_API,
-  CREATE_COURSE_API,
+  CREATE_SERVICE_API,
   CREATE_SECTION_API,
   CREATE_SUBSECTION_API,
   UPDATE_SECTION_API,
   DELETE_SECTION_API,
   UPDATE_SUBSECTION_API,
   DELETE_SUBSECTION_API,
-  EDIT_COURSE_API,
-  PUBLISH_COURSE_API,
-  GET_INSTRUCTORs_All_COURSES_API,
-  DELETE_COURSE_API
-} = courseEndpoints;
+  EDIT_SERVICE_API,
+  PUBLISH_SERVICE_API,
+  GET_PROVIDER_SERVICES_API,
+  DELETE_SERVICE_API
+} = serviceEndpoints;
 
 
-const { GET_ALL_COURSES_OF_INSTRUCTOR_FOR_DASHBOARD , GET_INSTRUCTOR_DASHBOARD_DATA } = profileEndpoints
+const { GET_PROVIDER_SERVICES_FOR_DASHBOARD , GET_BUSINESS_DASHBOARD_DATA } = profileEndpoints
 
 export function updateDisplayPicture(token, data) {
   return async (dispatch) => {
@@ -181,13 +181,13 @@ export function CreateNewCourse(FormData, token) {
     const toastId = toast.loading("Loading");
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector("POST", CREATE_COURSE_API, FormData, {
+      const response = await apiConnector("POST", CREATE_SERVICE_API, FormData, {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       });
       // console.log(response.data)
       dispatch(setStep(2));
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -202,18 +202,18 @@ export function CreateNewCourse(FormData, token) {
   };
 }
 
-export function EditCourse(FormData, token) {
+export function EditService(FormData, token) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading");
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector("POST", EDIT_COURSE_API, FormData, {
+      const response = await apiConnector("POST", EDIT_SERVICE_API, FormData, {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       });
       // console.log(response.data)
       dispatch(setStep(2));
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -243,7 +243,7 @@ export function AddNewSection(FormData, token) {
         }
       );
 
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -273,7 +273,7 @@ export function EditSection(FormData, token) {
       );
 
       // console.log(response.data);
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -304,7 +304,7 @@ export function DeleteSection(FormData, token) {
       );
 
       //  console.log(response.data)
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -345,7 +345,7 @@ export function AddNewSubSection(
       }
 
       //  console.log(response.data.data)
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       // console.log(addSubSection, editSubSection, viewSubSection);
 
@@ -383,7 +383,7 @@ export function EditSubSection(FormData, token ,  addSubSection,
       }
 
       // console.log(response.data.data);
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       addSubSection && dispatch(SetaddSubSection(null));
       editSubSection && dispatch(SeteditSubSection(null));
@@ -414,7 +414,7 @@ export function DeleteSubSection(FormData, token) {
       );
 
       //  console.log(response.data)
-      dispatch(setCourse(response.data.data));
+      dispatch(setService(response.data.data));
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -437,7 +437,7 @@ export function PublishorDraftCourse(FormData, token, status, navigate) {
     try {
       const response = await apiConnector(
         "POST",
-        PUBLISH_COURSE_API,
+        PUBLISH_SERVICE_API,
         FormData,
         {
           "Content-Type": "multipart/form-data",
@@ -446,8 +446,8 @@ export function PublishorDraftCourse(FormData, token, status, navigate) {
       );
       // console.log(response.data)
       // dispatch(setStep(1))
-      dispatch(setEditCourse(false))
-      dispatch(setCourse(null))
+      dispatch(setEditService(false))
+      dispatch(setService(null))
       navigate("/dashboard/my-courses");
 
 
@@ -471,7 +471,7 @@ export function FetchInstructorsAllCourses(InstructorId, token) {
     try {
       const response = await apiConnector(
         "POST",
-        GET_INSTRUCTORs_All_COURSES_API,
+        GET_PROVIDER_SERVICES_API,
         { InstructorId },
         {
           "Content-Type": "multipart/form-data",
@@ -501,7 +501,7 @@ export function DeleteInstructorCourses(InstructorId , CourseId , token) {
     try {
       const response = await apiConnector(
         "POST",
-        DELETE_COURSE_API,
+        DELETE_SERVICE_API,
         {
           InstructorId,
           CourseId,
@@ -533,14 +533,14 @@ export function DeleteInstructorCourses(InstructorId , CourseId , token) {
 
 // instructor Dashboard
 
-export function getInstructorDashboardData(token) {
+export function getBusinessDashboardData(token) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading");
     dispatch(setLoading(true));
     try {
       const response = await apiConnector(
         "GET",
-        GET_INSTRUCTOR_DASHBOARD_DATA,
+        GET_BUSINESS_DASHBOARD_DATA,
         {
           token
         },
@@ -553,7 +553,7 @@ export function getInstructorDashboardData(token) {
         throw new Error(response.data.message);
       }
 
-       dispatch(setInstructorDashboardData(response.data.data))
+       dispatch(setBusinessDashboardData(response.data.data))
 
     } catch (error) {
       console.log(error);
@@ -571,7 +571,7 @@ export function getInstructorCoursesForDashboardData(token) {
     try {
       const response = await apiConnector(
         "GET",
-        GET_ALL_COURSES_OF_INSTRUCTOR_FOR_DASHBOARD,
+        GET_PROVIDER_SERVICES_FOR_DASHBOARD,
         {
           token
         },

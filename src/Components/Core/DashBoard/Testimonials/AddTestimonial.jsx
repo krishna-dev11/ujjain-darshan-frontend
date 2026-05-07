@@ -3,7 +3,7 @@
 // import { useDispatch, useSelector } from "react-redux";
 // import { addTestimonial } from "../../../../Services.jsx/Operations/TestimonialAPI";
 // import { FiStar, FiUser, FiLayers, FiMessageSquare, FiActivity } from "react-icons/fi";
-// import Upload from "../RightPart/AddCourse/Step1/Upload";
+// import Upload from "../RightPart/AddService/Step1/Upload";
 // import { useNavigate } from "react-router-dom";
 
 // const AddTestimonial = () => {
@@ -149,7 +149,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { addTestimonial } from "../../../../Services.jsx/Operations/TestimonialAPI";
 import { FiStar, FiUser, FiLayers, FiMessageSquare } from "react-icons/fi";
-import Upload from "../RightPart/AddCourse/Step1/Upload";
+import Upload from "../RightPart/AddService/Step1/Upload";
 import { useNavigate } from "react-router-dom";
 
 const AddTestimonial = () => {

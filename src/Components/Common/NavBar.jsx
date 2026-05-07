@@ -32,7 +32,7 @@ const NavBar = () => {
 
 const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
-  const { category } = useSelector((state) => state.Category);
+  const { category } = useSelector((state) => state.serviceCategory);
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const { token } = useSelector((state) => state.auth);
   const [isMobileCatalogOpen, setIsMobileCatalogOpen] = useState(false); 
 
   const conditionFormNavBarWholeStyle =
-    location.pathname.split("/").includes("EnrolledCourses") ||
+    location.pathname.split("/").includes("BookedServices") ||
     location.pathname.split("/").includes("course");
 
   useEffect(() => {

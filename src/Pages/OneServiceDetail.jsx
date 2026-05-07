@@ -1,0 +1,867 @@
+// import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate, useParams } from "react-router-dom";
+// import { GetWholeServiceDetails } from "../Services.jsx/Operations/ServicesAPI";
+// import { FiGlobe, FiClock, FiLayers, FiShare2, FiUser, FiCheckCircle, FiShield } from "react-icons/fi";
+// import ServiceContentOverview from "../Components/Core/ServiceDetails/ServiceContentOverview";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import toast from "react-hot-toast";
+// import { AddServiceToBookingCart } from "../Services.jsx/Operations/BookingCartAPI";
+// import GetAvgRating from "../Utilities/avgRating";
+// import copy from "copy-to-clipboard";
+// // import calculateTotalCourseDuration from "../Utilities/CalculateDuration";
+// import ReactStars from "react-stars";
+// import ModernFooter from "../Components/Core/Home/ModernFooter";
+
+// const OneServiceDetail = () => {
+//   const { serviceDetails } = useSelector((state) => state.serviceCategory);
+//   const { token } = useSelector((state) => state.auth);
+//   const { user } = useSelector((state) => state.profile);
+//   const { CourseId } = useParams();
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+
+//   const [loading, setLoading] = useState(true);
+//   const [totalLectures, setTotalLectures] = useState(0);
+//   const [averageRating, setAverageRating] = useState(0);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setLoading(true);
+//       await dispatch(GetWholeServiceDetails(CourseId));
+//       setLoading(false);
+//     };
+//     fetchData();
+//   }, [CourseId, dispatch]);
+
+//   useEffect(() => {
+//     if (serviceDetails) {
+//       const avg = GetAvgRating(serviceDetails.ratingAndReviews);
+//       setAverageRating(avg || 0);
+
+//       if (serviceDetails.courseContent) {
+//         const count = serviceDetails.courseContent.reduce(
+//           (acc, sec) => acc + (sec.subSections?.length || 0), 
+//           0
+//         );
+//         setTotalLectures(count);
+//       }
+//     }
+//   }, [serviceDetails]);
+
+//   const handleShare = () => {
+//     copy(window.location.href);
+//     toast.success("Link Copied to Clipboard");
+//   };
+
+//   const handleAddServiceInCart = () => {
+//     if (!token) {
+//       toast.error("Please Login to Add to Cart");
+//       return navigate("/login");
+//     }
+//     // Check if course already purchased
+//     if (user?.courses?.includes(CourseId)) {
+//       toast.error("Course already in your collection");
+//       return;
+//     }
+//     dispatch(AddServiceToBookingCart(CourseId, user._id, token, navigate));
+//   };
+
+//   if (loading) return (
+//     <div className="h-screen bg-[#000000] flex flex-col items-center justify-center gap-4">
+//       <div className="w-12 h-12 border-4 border-[#10b981]/20 border-t-[#10b981] rounded-full animate-spin" />
+//       <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4b5563]">Loading Course Details...</p>
+//     </div>
+//   );
+
+//   return (
+//     <div className="min-h-screen bg-[#000000] text-[#ffffff] font-sans pt-16">
+      
+//       {/* ─── SIMPLE HERO SECTION ─── */}
+//       <div className="relative py-16 px-6 md:px-12 border-b border-[#ffffff]/5">
+//         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start relative z-10">
+          
+//           {/* Left Info */}
+//           <div className="lg:col-span-2 flex flex-col gap-6">
+//             <nav className="text-[10px] font-bold uppercase tracking-widest text-[#4b5563]">
+//                Catalog / <span className="text-[#10b981]">{serviceDetails?.category?.name || "Course"}</span>
+//             </nav>
+            
+//             <div className="space-y-4">
+//               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#ffffff]">
+//                 {serviceDetails.courseName}
+//               </h1>
+//               <p className="text-[#9ca3af] text-base font-light leading-relaxed max-w-2xl">
+//                 {serviceDetails.courseDescription}
+//               </p>
+//             </div>
+
+//             <div className="flex flex-wrap gap-8 items-center pt-2">
+//               <div className="flex items-center gap-3">
+//                 <span className="text-[#10b981] font-bold text-xl">{averageRating.toFixed(1)}</span>
+//                 <ReactStars count={5} edit={false} value={averageRating} size={20} color2={"#10b981"} />
+//               </div>
+//               <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiUser className="text-[#10b981]" /> {serviceDetails.studentEnrolled?.length || 0} Students Enrolled
+//               </div>
+//               <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiGlobe className="text-[#10b981]" /> English Node
+//               </div>
+//             </div>
+
+//             <div className="flex items-center gap-3 pt-6">
+//                <img src={serviceDetails.instructor?.imageUrl} className="w-10 h-10 rounded-full object-cover border border-[#ffffff]/10" alt="Instructor" />
+//                <p className="text-sm font-medium text-[#9ca3af]">
+//                  By <span className="text-[#ffffff]">{serviceDetails.instructor?.firstName} {serviceDetails.instructor?.lastName}</span>
+//                </p>
+//             </div>
+//           </div>
+
+//           {/* ─── ACTION CARD (Simplified) ─── */}
+//           <div className="lg:col-span-1">
+//             <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/10 p-6 rounded-3xl shadow-xl flex flex-col gap-6">
+//               <img src={serviceDetails.thumbnail} className="w-full aspect-video rounded-2xl object-cover border border-[#ffffff]/10" alt="Thumbnail" />
+
+//               <div className="flex justify-between items-center">
+//                 <p className="text-4xl font-bold text-[#ffffff]">₹{serviceDetails.price}</p>
+//                 <span className="px-3 py-1 bg-[#10b981]/10 text-[#10b981] text-[10px] font-bold rounded-lg uppercase">Full Access</span>
+//               </div>
+
+//               <div className="flex flex-col gap-3">
+//                 {user?.courses?.includes(serviceDetails._id) ? (
+//                   <button onClick={() => navigate("/BookedServices/active-Courses")} className="w-full py-4 bg-[#10b981] text-[#000000] font-bold rounded-xl text-xs uppercase tracking-widest hover:brightness-110 transition-all">Go to Dashboard</button>
+//                 ) : (
+//                   <button onClick={handleAddServiceInCart} className="w-full py-4 bg-[#ffffff] text-[#000000] font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-[#10b981] transition-all">Add to Cart</button>
+//                 )}
+//                 <button onClick={handleShare} className="w-full py-3 border border-[#ffffff]/10 text-[#6b7280] font-bold rounded-xl text-[10px] uppercase tracking-widest hover:text-[#ffffff] transition-all flex items-center justify-center gap-2">
+//                   <FiShare2 /> Share Course
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* ─── CONTENT GRID ─── */}
+//       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+//         <div className="lg:col-span-2 space-y-16">
+          
+//           {/* Objectives */}
+//           <section className="bg-[#ffffff]/[0.01] border border-[#ffffff]/5 p-8 rounded-3xl">
+//             <h3 className="text-xl font-bold mb-8 flex items-center gap-2">
+//                <FiShield className="text-[#10b981]" /> What you'll learn
+//             </h3>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//                {serviceDetails.whatYouWillLearn?.map((item, i) => (
+//                  <div key={i} className="flex gap-3">
+//                     <FiCheckCircle className="text-[#10b981] shrink-0 mt-1" size={14} />
+//                     <p className="text-[#9ca3af] text-sm leading-relaxed">{item}</p>
+//                  </div>
+//                ))}
+//             </div>
+//           </section>
+
+//           {/* Curriculum */}
+//           <section className="space-y-6">
+//             <div className="flex justify-between items-end">
+//               <h3 className="text-2xl font-bold">Curriculum</h3>
+//               <div className="text-[10px] text-[#4b5563] font-bold uppercase tracking-widest flex gap-4">
+//                 <span><FiLayers className="inline mr-1" /> {serviceDetails.courseContent?.length} Sections</span>
+//                 <span><FiClock className="inline mr-1" /> {totalLectures} Lectures</span>
+//               </div>
+//             </div>
+//             <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/5 rounded-2xl overflow-hidden">
+//                <ServiceContentOverview data={serviceDetails.courseContent} />
+//             </div>
+//           </section>
+
+//         </div>
+//       </div>
+
+//       <ModernFooter />
+//     </div>
+//   );
+// };
+
+// export default OneServiceDetail;
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate, useParams } from "react-router-dom";
+// import { GetWholeServiceDetails } from "../Services.jsx/Operations/ServicesAPI";
+// import { FiGlobe, FiClock, FiLayers, FiShare2, FiUser, FiCheckCircle, FiShield, FiMapPin } from "react-icons/fi";
+// import ServiceContentOverview from "../Components/Core/ServiceDetails/ServiceContentOverview";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import toast from "react-hot-toast";
+// import { AddServiceToBookingCart } from "../Services.jsx/Operations/BookingCartAPI";
+// import GetAvgRating from "../Utilities/avgRating";
+// import copy from "copy-to-clipboard";
+// import ReactStars from "react-stars";
+// import ModernFooter from "../Components/Core/Home/ModernFooter";
+
+// const OneServiceDetail = () => {
+//   const { serviceDetails } = useSelector((state) => state.serviceCategory);
+//   const { token } = useSelector((state) => state.auth);
+//   const { user } = useSelector((state) => state.profile);
+//   const { CourseId } = useParams();
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+
+//   const [loading, setLoading] = useState(true);
+//   const [totalLectures, setTotalLectures] = useState(0);
+//   const [averageRating, setAverageRating] = useState(0);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setLoading(true);
+//       await dispatch(GetWholeServiceDetails(CourseId));
+//       setLoading(false);
+//     };
+//     fetchData();
+//   }, [CourseId, dispatch]);
+
+//   useEffect(() => {
+//     if (serviceDetails) {
+//       const avg = GetAvgRating(serviceDetails.ratingAndReviews);
+//       setAverageRating(avg || 0);
+
+//       if (serviceDetails.courseContent) {
+//         const count = serviceDetails.courseContent.reduce(
+//           (acc, sec) => acc + (sec.subSections?.length || 0), 
+//           0
+//         );
+//         setTotalLectures(count);
+//       }
+//     }
+//   }, [serviceDetails]);
+
+//   const handleShare = () => {
+//     copy(window.location.href);
+//     toast.success("Link Copied to Clipboard");
+//   };
+
+//   const handleAddServiceInCart = () => {
+//     if (!token) {
+//       toast.error("Please Login to proceed with Booking");
+//       return navigate("/login");
+//     }
+//     if (user?.courses?.includes(CourseId)) {
+//       toast.error("You have already booked this package");
+//       return;
+//     }
+//     dispatch(AddServiceToBookingCart(CourseId, user._id, token, navigate));
+//   };
+
+//   if (loading) return (
+//     <div className="h-screen bg-[#000000] flex flex-col items-center justify-center gap-4">
+//       <div className="w-12 h-12 border-4 border-[#f97316]/20 border-t-[#f97316] rounded-full animate-spin" />
+//       <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4b5563]">सेवा विवरण लोड हो रहा है...</p>
+//     </div>
+//   );
+
+//   return (
+//     <div className="min-h-screen bg-[#000000] text-[#ffffff] font-sans pt-16">
+      
+//       {/* ─── SPIRITUAL HERO SECTION ─── */}
+//       <div className="relative py-16 px-6 md:px-12 border-b border-[#ffffff]/5">
+//         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start relative z-10">
+          
+//           {/* Left Info */}
+//           <div className="lg:col-span-2 flex flex-col gap-6">
+//             <nav className="text-[10px] font-bold uppercase tracking-widest text-[#4b5563]">
+//                 उज्जैन दर्शन / <span className="text-[#f97316]">{serviceDetails?.category?.name || "Service"}</span>
+//             </nav>
+            
+//             <div className="space-y-4">
+//               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#ffffff] uppercase">
+//                 {serviceDetails.courseName}
+//               </h1>
+//               <p className="text-[#9ca3af] text-base font-light leading-relaxed max-w-2xl">
+//                 {serviceDetails.courseDescription}
+//               </p>
+//             </div>
+
+//             <div className="flex flex-wrap gap-8 items-center pt-2">
+//               <div className="flex items-center gap-3">
+//                 <span className="text-[#f97316] font-bold text-xl">{averageRating.toFixed(1)}</span>
+//                 <ReactStars count={5} edit={false} value={averageRating} size={20} color2={"#f97316"} />
+//               </div>
+//               <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiUser className="text-[#f97316]" /> {serviceDetails.studentEnrolled?.length || 0} Devotees Booked
+//               </div>
+//               <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiMapPin className="text-[#f97316]" /> Ujjain Shila
+//               </div>
+//             </div>
+
+//             <div className="flex items-center gap-3 pt-6">
+//                <img src={serviceDetails.instructor?.imageUrl} className="w-10 h-10 rounded-full object-cover border border-[#ffffff]/10" alt="Guide" />
+//                <p className="text-sm font-medium text-[#9ca3af]">
+//                   Service Managed By <span className="text-[#ffffff] font-bold">{serviceDetails.instructor?.firstName} {serviceDetails.instructor?.lastName}</span>
+//                </p>
+//             </div>
+//           </div>
+
+//           {/* ─── BOOKING CARD ─── */}
+//           <div className="lg:col-span-1">
+//             <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/10 p-6 rounded-3xl shadow-xl flex flex-col gap-6 sticky top-24">
+//               <img src={serviceDetails.thumbnail} className="w-full aspect-video rounded-2xl object-cover border border-[#ffffff]/10" alt="Package Thumbnail" />
+
+//               <div className="flex justify-between items-center">
+//                 <p className="text-4xl font-bold text-[#ffffff]">₹{serviceDetails.price}</p>
+//                 <span className="px-3 py-1 bg-[#f97316]/10 text-[#f97316] text-[10px] font-bold rounded-lg uppercase">All Inclusive</span>
+//               </div>
+
+//               <div className="flex flex-col gap-3">
+//                 {user?.courses?.includes(serviceDetails._id) ? (
+//                   <button onClick={() => navigate("/dashboard/enrolled-courses")} className="w-full py-4 bg-[#f97316] text-[#ffffff] font-bold rounded-xl text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)]">View My Booking</button>
+//                 ) : (
+//                   <button onClick={handleAddServiceInCart} className="w-full py-4 bg-[#ffffff] text-[#000000] font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-[#f97316] hover:text-white transition-all">Book Service Now</button>
+//                 )}
+//                 <button onClick={handleShare} className="w-full py-3 border border-[#ffffff]/10 text-[#6b7280] font-bold rounded-xl text-[10px] uppercase tracking-widest hover:text-[#ffffff] transition-all flex items-center justify-center gap-2">
+//                   <FiShare2 /> Share Package
+//                 </button>
+//               </div>
+              
+//               <p className="text-[9px] text-center text-gray-600 font-medium uppercase tracking-tighter">
+//                 * 24/7 Spiritual Assistance Available in Ujjain
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* ─── CONTENT GRID ─── */}
+//       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+//         <div className="lg:col-span-2 space-y-16">
+          
+//           {/* Service Objectives */}
+//           <section className="bg-[#ffffff]/[0.01] border border-[#ffffff]/5 p-8 rounded-3xl">
+//             <h3 className="text-xl font-bold mb-8 flex items-center gap-2 uppercase tracking-tight">
+//                <FiShield className="text-[#f97316]" /> क्या शामिल है (What's included)
+//             </h3>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//                {serviceDetails.whatYouWillLearn?.map((item, i) => (
+//                  <div key={i} className="flex gap-3">
+//                     <FiCheckCircle className="text-[#f97316] shrink-0 mt-1" size={14} />
+//                     <p className="text-[#9ca3af] text-sm leading-relaxed">{item}</p>
+//                  </div>
+//                ))}
+//             </div>
+//           </section>
+
+//           {/* Service Timeline / Itinerary */}
+//           <section className="space-y-6">
+//             <div className="flex justify-between items-end">
+//               <h3 className="text-2xl font-bold uppercase tracking-tight">Service Timeline</h3>
+//               <div className="text-[10px] text-[#4b5563] font-bold uppercase tracking-widest flex gap-4">
+//                 <span><FiLayers className="inline mr-1" /> {serviceDetails.courseContent?.length} Phases</span>
+//                 <span><FiClock className="inline mr-1" /> {totalLectures} Activities</span>
+//               </div>
+//             </div>
+//             <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/5 rounded-2xl overflow-hidden">
+//                <ServiceContentOverview data={serviceDetails.courseContent} />
+//             </div>
+//           </section>
+
+//         </div>
+//       </div>
+
+//       <ModernFooter />
+//     </div>
+//   );
+// };
+
+// export default OneServiceDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate, useParams } from "react-router-dom";
+// import { GetWholeServiceDetails } from "../Services.jsx/Operations/ServicesAPI";
+// import { FiGlobe, FiClock, FiLayers, FiShare2, FiUser, FiCheckCircle, FiShield, FiMapPin } from "react-icons/fi";
+// import ServiceContentOverview from "../Components/Core/ServiceDetails/ServiceContentOverview";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import toast from "react-hot-toast";
+// import { AddServiceToBookingCart } from "../Services.jsx/Operations/BookingCartAPI";
+// import GetAvgRating from "../Utilities/avgRating";
+// import copy from "copy-to-clipboard";
+// import ReactStars from "react-stars";
+// import ModernFooter from "../Components/Core/Home/ModernFooter";
+// import { Helmet } from "react-helmet-async";
+
+
+
+// const OneServiceDetail = () => {
+//   const { serviceDetails } = useSelector((state) => state.serviceCategory);
+//   const { token } = useSelector((state) => state.auth);
+//   const { user } = useSelector((state) => state.profile);
+//   const { CourseId } = useParams();
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+
+//   const [loading, setLoading] = useState(true);
+//   const [totalLectures, setTotalLectures] = useState(0);
+//   const [averageRating, setAverageRating] = useState(0);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       setLoading(true);
+//       await dispatch(GetWholeServiceDetails(CourseId));
+//       setLoading(false);
+//     };
+//     fetchData();
+//   }, [CourseId, dispatch]);
+
+//   useEffect(() => {
+//     if (serviceDetails) {
+//       const avg = GetAvgRating(serviceDetails.ratingAndReviews);
+//       setAverageRating(avg || 0);
+
+//       if (serviceDetails.courseContent) {
+//         const count = serviceDetails.courseContent.reduce(
+//           (acc, sec) => acc + (sec.subSections?.length || 0), 
+//           0
+//         );
+//         setTotalLectures(count);
+//       }
+//     }
+//   }, [serviceDetails]);
+
+//   const handleShare = () => {
+//     copy(window.location.href);
+//     toast.success("Link Copied to Clipboard");
+//   };
+
+//   // ─── ENHANCED BOOKING LOGIC ───
+//   const handleAddServiceInCart = () => {
+//     // 1. Agar login nahi hai toh WhatsApp msg bhejo aur login par redirect karo
+//     if (!token) {
+//       const phoneNumber = "919630385826"; // Client WhatsApp Number
+//       const message = `Jai Mahakal! 🙏 I am interested in booking the service: *${serviceDetails?.courseName}*. Please provide more details.`;
+//       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      
+//       // toast.error("Please Login to proceed. Redirecting to support...");
+      
+//       // WhatsApp open karega new tab me
+//       window.open(whatsappUrl, "_blank");
+      
+//       // Login par bhej dega
+//       // return navigate("/login");
+//     }
+
+//     // 2. Duplicate check (Logged in users ke liye)
+//     if (user?.courses?.includes(CourseId)) {
+//       toast.error("You have already booked this package");
+//       return;
+//     }
+
+//     // 3. Authenticated Dispatch (Functionality preserved)
+//     dispatch(AddServiceToBookingCart(CourseId, user._id, token, navigate));
+//   };
+
+//   if (loading) return (
+//     <div className="h-screen bg-[#000000] flex flex-col items-center justify-center gap-4">
+//       <div className="w-12 h-12 border-4 border-[#f97316]/20 border-t-[#f97316] rounded-full animate-spin" />
+//       <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4b5563]">सेवा विवरण लोड हो रहा है...</p>
+//     </div>
+//   );
+
+//   return (
+//     <div className="min-h-screen bg-[#000000] text-[#ffffff] font-sans pt-16">
+      
+
+
+//      <Helmet>
+//   <title>
+//     {serviceDetails?.courseName} | Mahakal Darshan Assistance in Ujjain
+//   </title>
+
+//   <meta 
+//     name="description"
+//     content={serviceDetails?.courseDescription}
+//   />
+
+//   <link
+//     rel="canonical"
+//     href={`https://www.ujjainmahakaldarshnabooking.in/catalog/${serviceDetails?.slug}`}
+//   />
+// </Helmet>
+
+
+//       {/* ─── SPIRITUAL HERO SECTION ─── */}
+//       <div className="relative py-16 px-6 md:px-12 border-b border-[#ffffff]/5">
+//         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start relative z-10">
+          
+//           {/* Left Info */}
+//           <div className="lg:col-span-2 flex flex-col gap-6">
+//             <nav className="text-[10px] font-bold uppercase tracking-widest text-[#4b5563]">
+//                 उज्जैन दर्शन / <span className="text-[#f97316]">{serviceDetails?.category?.name || "Service"}</span>
+//             </nav>
+            
+//             <div className="space-y-4">
+//               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#ffffff] uppercase leading-tight">
+//                 {serviceDetails.courseName}
+//               </h1>
+//               <p className="text-[#9ca3af] text-base font-light leading-relaxed max-w-2xl">
+//                 {serviceDetails.courseDescription}
+//               </p>
+//             </div>
+
+//             <div className="flex flex-wrap gap-8 items-center pt-2">
+//               <div className="flex items-center gap-3">
+//                 {/* <span className="text-[#f97316] font-bold text-xl">{averageRating.toFixed(1)}</span> */}
+//                 <span className="text-[#f97316] font-bold text-xl">{4.5}</span>
+
+//                 {/* <ReactStars count={5} edit={false} value={averageRating} size={20} color2={"#f97316"} /> */}
+//                 <ReactStars count={5} edit={false} value={4.5} size={20} color2={"#f97316"} />
+                 
+//               </div>
+//               {/* <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiUser className="text-[#f97316]" /> {serviceDetails.studentEnrolled?.length || 0} Devotees Booked
+//               </div> */}
+//                             <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiUser className="text-[#f97316]" /> 1000+ Devotees Booked
+//               </div>
+//               <div className="flex items-center gap-2 text-xs font-medium text-[#6b7280]">
+//                 <FiMapPin className="text-[#f97316]" /> Ujjain
+//               </div>
+//             </div>
+
+//             <div className="flex items-center gap-3 pt-6">
+//                <img src={serviceDetails.instructor?.imageUrl} className="w-10 h-10 rounded-full object-cover border border-[#ffffff]/10" alt="Guide" />
+//                <p className="text-sm font-medium text-[#9ca3af]">
+//                   Service Managed By <span className="text-[#ffffff] font-bold">{serviceDetails.instructor?.firstName} {serviceDetails.instructor?.lastName}</span>
+//                </p>
+//             </div>
+//           </div>
+
+//           {/* ─── BOOKING CARD ─── */}
+//           <div className="lg:col-span-1">
+//             <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/10 p-6 rounded-3xl shadow-xl flex flex-col gap-6 sticky top-24">
+//               <img src={serviceDetails.thumbnail} className="w-full aspect-video rounded-2xl object-cover border border-[#ffffff]/10" alt="Package Thumbnail" />
+
+//               <div className="flex justify-between items-center">
+//                 {/* <p className="text-4xl font-bold text-[#ffffff]">₹{serviceDetails.price}</p> */}
+//                 <span className="px-3 py-1 bg-[#f97316]/10 text-[#f97316] text-[10px] font-bold rounded-lg uppercase">All Inclusive</span>
+//               </div>
+
+//               <div className="flex flex-col gap-3">
+//                 {user?.courses?.includes(serviceDetails._id) ? (
+//                   <button onClick={() => navigate("/dashboard/enrolled-courses")} className="w-full py-4 bg-[#f97316] text-[#ffffff] font-bold rounded-xl text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)]">View My Booking</button>
+//                 ) : (
+//                   <button onClick={handleAddServiceInCart} className="w-full py-4 bg-[#ffffff] text-[#000000] font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-[#f97316] hover:text-white transition-all">Book Service Now</button>
+//                 )}
+//                 <button onClick={handleShare} className="w-full py-3 border border-[#ffffff]/10 text-[#6b7280] font-bold rounded-xl text-[10px] uppercase tracking-widest hover:text-[#ffffff] transition-all flex items-center justify-center gap-2">
+//                   <FiShare2 /> Share Package
+//                 </button>
+//               </div>
+              
+//               <p className="text-[9px] text-center text-gray-600 font-medium uppercase tracking-tighter">
+//                 * 24/7 Spiritual Assistance Available in Ujjain
+//               </p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* ─── CONTENT GRID ─── */}
+//       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+//         <div className="lg:col-span-2 space-y-16">
+          
+//           {/* Service Objectives */}
+//           <section className="bg-[#ffffff]/[0.01] border border-[#ffffff]/5 p-8 rounded-3xl">
+//             <h3 className="text-xl font-bold mb-8 flex items-center gap-2 uppercase tracking-tight">
+//                <FiShield className="text-[#f97316]" /> क्या शामिल है (What's included)
+//             </h3>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//                {serviceDetails.whatYouWillLearn?.map((item, i) => (
+//                  <div key={i} className="flex gap-3">
+//                     <FiCheckCircle className="text-[#f97316] shrink-0 mt-1" size={14} />
+//                     <p className="text-[#9ca3af] text-sm leading-relaxed">{item}</p>
+//                  </div>
+//                ))}
+//             </div>
+//           </section>
+
+//           {/* Service Timeline / Itinerary */}
+//           <section className="space-y-6">
+//             <div className="flex justify-between items-end">
+//               <h3 className="text-2xl font-bold uppercase tracking-tight">Service Timeline</h3>
+//               <div className="text-[10px] text-[#4b5563] font-bold uppercase tracking-widest flex gap-4">
+//                 <span><FiLayers className="inline mr-1" /> {serviceDetails.courseContent?.length} Phases</span>
+//                 <span><FiClock className="inline mr-1" /> {totalLectures} Activities</span>
+//               </div>
+//             </div>
+//             <div className="bg-[#ffffff]/[0.02] border border-[#ffffff]/5 rounded-2xl overflow-hidden">
+//                <ServiceContentOverview data={serviceDetails.courseContent} />
+//             </div>
+//           </section>
+
+//         </div>
+//       </div>
+
+//       <ModernFooter />
+//     </div>
+//   );
+// };
+
+// export default OneServiceDetail;
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { GetWholeServiceDetails } from "../Services.jsx/Operations/ServicesAPI";
+import { 
+  FiGlobe, FiClock, FiLayers, FiShare2, 
+  FiUser, FiCheckCircle, FiShield, FiMapPin, FiPlayCircle 
+} from "react-icons/fi";
+import ServiceContentOverview from "../Components/Core/ServiceDetails/ServiceContentOverview";
+import toast from "react-hot-toast";
+import { AddServiceToBookingCart } from "../Services.jsx/Operations/BookingCartAPI";
+import GetAvgRating from "../Utilities/avgRating";
+import copy from "copy-to-clipboard";
+import ReactStars from "react-stars";
+import ModernFooter from "../Components/Core/Home/ModernFooter";
+import { Helmet } from "react-helmet-async";
+
+const OneServiceDetail = () => {
+  const { serviceDetails } = useSelector((state) => state.serviceCategory);
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
+  const { CourseId } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
+  const [totalLectures, setTotalLectures] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
+
+  // Safely handle arrays even if they come as strings from Backend
+  const cleanArray = (data) => {
+    if (!data) return [];
+    if (Array.isArray(data)) {
+      return data.flatMap((item) => {
+        if (typeof item === "string") {
+          try { return JSON.parse(item); } catch { return [item]; }
+        }
+        return item;
+      });
+    }
+    return [];
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await dispatch(GetWholeServiceDetails(CourseId));
+      setLoading(false);
+    };
+    fetchData();
+  }, [CourseId, dispatch]);
+
+  useEffect(() => {
+    if (serviceDetails) {
+      const avg = GetAvgRating(serviceDetails.ratingAndReviews);
+      setAverageRating(avg || 4.8); // Default to 4.8 for social proof if 0
+
+      if (serviceDetails.courseContent) {
+        const count = serviceDetails.courseContent.reduce(
+          (acc, sec) => acc + (sec.subSections?.length || 0), 
+          0
+        );
+        setTotalLectures(count);
+      }
+    }
+  }, [serviceDetails]);
+
+  const handleShare = () => {
+    copy(window.location.href);
+    toast.success("Link Copied to Clipboard");
+  };
+
+  const handleBookingAction = () => {
+    // 1. WhatsApp Redirect for Guests (High Conversion Logic)
+    if (!token) {
+      const phoneNumber = "919630385826"; 
+      const message = `Jai Mahakal! 🙏 I am interested in booking: *${serviceDetails?.courseName}*. Please provide more details.`;
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      
+      window.open(whatsappUrl, "_blank");
+      return; 
+    }
+
+    // 2. Already Booked Check
+    if (user?.courses?.includes(CourseId)) {
+      toast.error("You have already booked this package");
+      return;
+    }
+
+    // 3. Regular Cart Flow for Logged-in Users
+    dispatch(AddServiceToBookingCart(CourseId, user?._id, token, navigate));
+  };
+
+  if (loading) return (
+    <div className="h-screen bg-[#000000] flex flex-col items-center justify-center gap-4">
+      <div className="w-12 h-12 border-4 border-[#f97316]/20 border-t-[#f97316] rounded-full animate-spin" />
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f97316] animate-pulse">
+        Seva Vivaran Load Ho Raha Hai...
+      </p>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-[#000000] text-[#ffffff] font-sans selection:bg-[#f97316]/30">
+      <Helmet>
+        <title>{serviceDetails?.courseName} | Ujjain Mahakal Darshan Assistance</title>
+        <meta name="description" content={serviceDetails?.courseDescription} />
+        <link rel="canonical" href={`https://www.ujjainmahakaldarshnabooking.in/catalog/${serviceDetails?.slug}`} />
+      </Helmet>
+
+      {/* SPIRITUAL HERO SECTION */}
+      <div className="relative pt-24 pb-16 px-6 md:px-12 border-b border-white/5 bg-gradient-to-b from-[#f97316]/10 to-transparent">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+          
+          <div className="lg:col-span-2 space-y-6">
+            <nav className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+              Ujjain Darshan / <span className="text-[#f97316]">{serviceDetails?.category?.name || "Service"}</span>
+            </nav>
+            
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white uppercase leading-tight">
+              {serviceDetails?.courseName}
+            </h1>
+            
+            <p className="text-gray-400 text-lg font-light leading-relaxed max-w-2xl">
+              {serviceDetails?.courseDescription}
+            </p>
+
+            <div className="flex flex-wrap gap-8 items-center pt-4 border-y border-white/5 py-4">
+              <div className="flex items-center gap-2">
+                <span className="text-[#f97316] font-bold text-2xl">{averageRating.toFixed(1)}</span>
+                <ReactStars count={5} edit={false} value={averageRating} size={20} color2={"#f97316"} />
+              </div>
+              <div className="flex items-center gap-2 text-xs font-medium text-gray-400">
+                <FiUser className="text-[#f97316]" /> **2500+** Devotees Served
+              </div>
+              <div className="flex items-center gap-2 text-xs font-medium text-gray-400">
+                <FiMapPin className="text-[#f97316]" /> Mahakaleshwar, Ujjain
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5 w-fit">
+               <img src={serviceDetails?.instructor?.imageUrl} className="w-12 h-12 rounded-full object-cover border border-[#f97316]/30" alt="Guide" />
+               <div>
+                 <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Managed By</p>
+                 <p className="text-base font-semibold">{serviceDetails?.instructor?.firstName} {serviceDetails?.instructor?.lastName}</p>
+               </div>
+            </div>
+          </div>
+
+          {/* BOOKING CARD */}
+          <div className="lg:col-span-1 lg:sticky lg:top-24">
+            <div className="bg-[#0A0A0A] border border-white/10 p-6 rounded-3xl shadow-2xl shadow-[#f97316]/5 flex flex-col gap-6">
+              <div className="relative group overflow-hidden rounded-2xl">
+                <img src={serviceDetails?.thumbnail} className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500" alt="Package" />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <FiPlayCircle className="text-white text-5xl" />
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center">
+                {/* <p className="text-4xl font-bold text-white">₹{serviceDetails?.price}</p> */}
+                <span className="px-3 py-1 bg-[#f97316]/10 text-[#f97316] text-[10px] font-bold rounded-lg uppercase tracking-tighter">All Inclusive</span>
+              </div>
+
+              <div className="space-y-3">
+                {user?.courses?.includes(CourseId) ? (
+                  <button onClick={() => navigate("/dashboard/enrolled-courses")} className="w-full py-4 bg-[#f97316] text-white font-bold rounded-xl text-xs uppercase tracking-widest hover:brightness-110 transition-all">View My Booking</button>
+                ) : (
+                  <button onClick={handleBookingAction} className="w-full py-4 bg-white text-black font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-[#f97316] hover:text-white transition-all transform active:scale-95">Book Service / Enquiry</button>
+                )}
+                <button onClick={handleShare} className="w-full py-3 border border-white/10 text-gray-400 font-bold rounded-xl text-[10px] uppercase tracking-widest hover:text-white transition-all flex items-center justify-center gap-2">
+                  <FiShare2 /> Share Package
+                </button>
+              </div>
+              <p className="text-[9px] text-center text-gray-600 font-medium uppercase tracking-widest leading-loose">
+                * 24/7 Spiritual Assistance Available in Ujjain
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT GRID */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+        <div className="lg:col-span-2 space-y-16">
+          
+          {/* WHAT'S INCLUDED */}
+          <section className="bg-white/[0.01] border border-white/5 p-8 rounded-3xl">
+            <h3 className="text-xl font-bold mb-8 flex items-center gap-3 uppercase tracking-tight">
+               <FiShield className="text-[#f97316]" /> क्या शामिल है (What's Included)
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               {cleanArray(serviceDetails?.whatYouWillLearn).map((item, i) => (
+                 <div key={i} className="flex gap-3 group">
+                    <FiCheckCircle className="text-[#f97316] shrink-0 mt-1 group-hover:scale-125 transition-transform" size={16} />
+                    <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200 transition-colors">{item}</p>
+                 </div>
+               ))}
+            </div>
+          </section>
+
+          {/* TIMELINE */}
+          <section className="space-y-8">
+            <div className="flex flex-col sm:flex-row justify-between items-end gap-4 border-b border-white/5 pb-4">
+              <h3 className="text-2xl font-bold uppercase tracking-tight">Service Timeline</h3>
+              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest flex gap-6">
+                <span className="flex items-center gap-2"><FiLayers className="text-[#f97316]" /> {serviceDetails?.courseContent?.length} Phases</span>
+                <span className="flex items-center gap-2"><FiClock className="text-[#f97316]" /> {totalLectures} Activities</span>
+              </div>
+            </div>
+            <div className="bg-[#0A0A0A] border border-white/5 rounded-3xl overflow-hidden shadow-inner">
+               <ServiceContentOverview data={serviceDetails?.courseContent} />
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <ModernFooter />
+    </div>
+  );
+};
+
+export default OneServiceDetail;
