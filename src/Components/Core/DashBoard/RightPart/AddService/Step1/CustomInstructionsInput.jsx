@@ -99,9 +99,9 @@ const CustomInstructionsInput = ({ name, label, Placeholder, register, errors, s
   const { editService, course } = useSelector((state) => state.service);
 
   useEffect(() => {
-    if (editService) setRequirementList(course?.instructions || []);
+    if (editService) setRequirementList(Array.isArray(course?.instructions) ? course.instructions : []);
     register(name, { required: true, validate: (v) => v.length > 0 });
-  }, []);
+  }, [editService, course, name, register]);
 
   useEffect(() => {
     setValue(name, requirementList);

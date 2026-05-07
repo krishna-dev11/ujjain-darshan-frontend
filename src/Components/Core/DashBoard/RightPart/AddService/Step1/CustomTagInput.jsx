@@ -89,9 +89,9 @@ const CustomTagInput = ({ name, lable, register, Placeholder, errors, setValue }
   const { editService, course } = useSelector((state) => state.service);
 
   useEffect(() => {
-    if (editService) setChip(course?.tag || []);
+    if (editService) setChip(Array.isArray(course?.tag) ? course.tag : []);
     register(name, { required: true, validate: (v) => v.length > 0 });
-  }, []);
+  }, [editService, course, name, register]);
 
   useEffect(() => {
     setValue(name, Chip);

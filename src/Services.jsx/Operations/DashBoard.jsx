@@ -553,7 +553,10 @@ export function getBusinessDashboardData(token) {
         throw new Error(response.data.message);
       }
 
-       dispatch(setBusinessDashboardData(response.data.data))
+       dispatch(setBusinessDashboardData({
+         data: response.data.data,
+         dashboardExtras: response.data.dashboardExtras,
+       }))
 
     } catch (error) {
       console.log(error);

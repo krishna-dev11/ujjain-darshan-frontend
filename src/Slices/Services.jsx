@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
    Step:1,
    service:null,
+   course:null,
    editService : false , 
    bookedServicesDataForCard : null,
    serviceMediaUrl: null,
@@ -22,6 +23,7 @@ const initialState = {
          },
          setService(state , action){
             state.service = action.payload
+            state.course = action.payload
          },
          setEditService(state , action){
             state.editService = action.payload

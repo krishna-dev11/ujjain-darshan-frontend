@@ -238,6 +238,7 @@ import { useNavigate } from "react-router-dom";
 import { setStep } from "../../../../../../Slices/Services";
 import { IoIosArrowBack } from "react-icons/io";
 import { FiGlobe, FiRadio, FiCheckCircle } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const Publish = () => {
   const dispatch = useDispatch();
@@ -265,7 +266,11 @@ const Publish = () => {
   }, [course, setValue]);
 
   const submitHandler = (data) => {
-    if (!course?._id) return;
+    if (!course?._id) {
+      toast.error("Please create service details before publishing");
+      dispatch(setStep(1));
+      return;
+    }
 
     const status = data.PublishORDraft ? COURSE_STATUS.PUBLISHED : COURSE_STATUS.DRAFT;
     const formData = new FormData();

@@ -71,11 +71,11 @@ const ServiceBenefitsInput = ({ name, lable, register, setValue, errors }) => {
   const { editService, course } = useSelector((state) => state.service);
 
   useEffect(() => {
-    if (editService) setChip(course.whatYouWillLearn);
+    if (editService) setChip(Array.isArray(course?.whatYouWillLearn) ? course.whatYouWillLearn : []);
     register(name, { required: true, validate: (v) => v.length > 0 });
-  }, []);
+  }, [editService, course, name, register]);
 
-  useEffect(() => { setValue(name, Chip); }, [Chip]);
+  useEffect(() => { setValue(name, Chip); }, [Chip, name, setValue]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === ",") {

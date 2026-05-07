@@ -5,7 +5,8 @@ const initialState = {
     user : localStorage.getItem("user") ? (JSON.parse(localStorage.getItem("user"))) : null,
     Loading : false,
     BusinessDashboardData : [],
-    InstructorCoursesData:[]
+    InstructorCoursesData:[],
+    dashboardExtras: {}
 }
 
   const profileSlice = createSlice({
@@ -19,7 +20,8 @@ const initialState = {
           state.Loading = action.payload
         },
         setBusinessDashboardData(state , action){
-          state.BusinessDashboardData = action.payload
+          state.BusinessDashboardData = action.payload?.data || action.payload || []
+          state.dashboardExtras = action.payload?.dashboardExtras || {}
         },
         setInstructorCoursesForDashboardData(state , action){
           state.InstructorCoursesData = action.payload

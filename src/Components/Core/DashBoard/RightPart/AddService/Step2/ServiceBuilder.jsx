@@ -6,6 +6,7 @@ import { AddNewSection, EditSection } from "../../../../../../Services.jsx/Opera
 import ServiceSectionMediaDisplay from "./ServiceSectionMediaDisplay";
 import { setEditService, setStep } from "../../../../../../Slices/Services";
 import { SetEditSection } from "../../../../../../Slices/ServiceSection";
+import toast from "react-hot-toast";
 
 const ServiceBuilder = () => {
   const { register, handleSubmit, setValue } = useForm();
@@ -19,6 +20,12 @@ const ServiceBuilder = () => {
   }, [editSection, setValue]);
 
   const onFormSubmit = (data) => {
+    if (!course?._id) {
+      toast.error("Please complete service details first");
+      dispatch(setStep(1));
+      return;
+    }
+
     const formData = new FormData();
 
     if (editSection) {

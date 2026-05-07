@@ -651,7 +651,6 @@ import {
 } from "react-icons/fi";
 import ServiceContentOverview from "../Components/Core/ServiceDetails/ServiceContentOverview";
 import toast from "react-hot-toast";
-import { AddServiceToBookingCart } from "../Services.jsx/Operations/BookingCartAPI";
 import GetAvgRating from "../Utilities/avgRating";
 import copy from "copy-to-clipboard";
 import ReactStars from "react-stars";
@@ -660,7 +659,6 @@ import { Helmet } from "react-helmet-async";
 
 const OneServiceDetail = () => {
   const { serviceDetails } = useSelector((state) => state.serviceCategory);
-  const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
   const { CourseId } = useParams();
   const dispatch = useDispatch();
@@ -714,24 +712,17 @@ const OneServiceDetail = () => {
   };
 
   const handleBookingAction = () => {
-    // 1. WhatsApp Redirect for Guests (High Conversion Logic)
-    if (!token) {
-      const phoneNumber = "919630385826"; 
-      const message = `Jai Mahakal! 🙏 I am interested in booking: *${serviceDetails?.courseName}*. Please provide more details.`;
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      
-      window.open(whatsappUrl, "_blank");
-      return; 
-    }
+    const phoneNumber = "919630385826";
+    const message = [
+      "Jai Mahakal!",
+      `I am interested in booking/enquiry for: ${serviceDetails?.courseName || "Ujjain Darshan Service"}.`,
+      "Package: All Inclusive",
+      `Page: ${window.location.href}`,
+      "Please provide more details."
+    ].join("\n");
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-    // 2. Already Booked Check
-    if (user?.courses?.includes(CourseId)) {
-      toast.error("You have already booked this package");
-      return;
-    }
-
-    // 3. Regular Cart Flow for Logged-in Users
-    dispatch(AddServiceToBookingCart(CourseId, user?._id, token, navigate));
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   if (loading) return (

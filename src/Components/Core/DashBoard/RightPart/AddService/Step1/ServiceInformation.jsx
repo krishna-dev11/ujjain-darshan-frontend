@@ -254,7 +254,7 @@ import CustomInstructionsInput from "./CustomInstructionsInput";
 import Upload from "./Upload";
 import { COURSE_STATUS } from "../../../../../../Utilities/Constaints";
 import ServiceBenefitsInput from "./ServiceBenefitsInput";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const ServiceInformation = () => {
   const dispatch = useDispatch();
@@ -329,6 +329,10 @@ const ServiceInformation = () => {
     }
 
     if (editService) {
+      if (!course?._id) {
+        toast.error("Service data is not loaded yet");
+        return;
+      }
       formData.append("courseId", course._id);
       dispatch(EditService(formData, token));
     } else {
